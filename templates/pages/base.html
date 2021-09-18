@@ -8,22 +8,37 @@
   <meta name="author" content="colorlib.com">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet"/>
   <link href="{% static 'pages/css/main.css' %}" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'pages/css/font-awesome.min.css' %}">
   <title>Medics</title>
 </head>
 <body>
-<header>
-  <h3 class="logo">MEDICS</h3>
-  <nav>
-    <ul class="nav__links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Charts</a></li>
-    </ul>
-  </nav>
-  <a class="cta" href="#"><button class="sign_in">Sign in</button></a>
-</header>
+<div class="top-nav">
+  <header>
+    <h3 class="logo">MEDICS</h3>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Charts</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="#">
+      <button class="sign_in">Sign in</button>
+    </a>
+  </header>
+  <div class="wrap">
+    <div class="search">
+      <input type="text" class="searchTerm" placeholder="Search">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="container">
 {% block content %}
   <!-- Dynamic Views-->
 {% endblock %}
+</div>
 </body>
 </html>
