@@ -9,22 +9,26 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet"/>
   <link href="{% static 'pages/css/main.css' %}" rel="stylesheet"/>
   <link rel="stylesheet" href="{% static 'pages/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'pages/css/bootstrap.min.css' %}">
+  <script src="{% static 'pages/js/bootstrap.min.js' %}"></script>
   <title>Medics</title>
 </head>
 <body>
 <div class="top-nav">
   <header>
-    <h3 class="logo">MEDICS</h3>
-    <nav>
-      <ul class="nav__links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Charts</a></li>
-      </ul>
-    </nav>
-    <a class="cta" href="#">
-      <button class="sign_in">Sign in</button>
-    </a>
+    <div class="navigation">
+      <h3 class="logo">MEDICS</h3>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Charts</a></li>
+        </ul>
+      </nav>
+      <a class="cta" href="#">
+        <button class="sign_in">Sign in</button>
+      </a>
+    </div>
   </header>
   <div class="wrap">
     <div class="search">
@@ -35,10 +39,31 @@
     </div>
   </div>
 </div>
-<div class="container">
-{% block content %}
-  <!-- Dynamic Views-->
-{% endblock %}
+
+<div class="main-container">
+  <div class="row" style="margin-left: 0; margin-right: 0">
+    <div class="col-md-3">
+      <div class="row p-3">
+        <select class="form-select" aria-label="Gender">
+          <option selected>Gender</option>
+          <option value="1">Male</option>
+          <option value="2">Female</option>
+        </select>
+      </div>
+      <div class="row p-3">
+        <select class="form-select" aria-label="Language">
+          <option selected>Language</option>
+          <option value="1">Finnish</option>
+          <option value="2">Sweden</option>
+        </select>
+      </div>
+    </div>
+    <div class="col" style="background-color: #0a58ca">
+      {% block content %}
+        <!-- Dynamic Views-->
+      {% endblock %}
+    </div>
+  </div>
 </div>
 </body>
 </html>
