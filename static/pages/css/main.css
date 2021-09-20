@@ -11,7 +11,7 @@ li, a, button {
     font-family: "Monda", sans-serif;
     font-weight: 600;
     font-size: 16px;
-    color: #512773;
+    color: #4997c9;
     text-decoration: none;
 }
 
@@ -21,7 +21,7 @@ li, a, button {
     width: 100%;
     z-index: 100;
     height: 207px;
-    background-color: #e0ceff;
+    background-color: #66afe9;
     border-bottom-left-radius: 77px;
 }
 
@@ -39,7 +39,7 @@ li, a, button {
 .logo {
     font-family: "Monda", sans-serif;
     font-weight: 600;
-    color: #4b0181;
+    color: #000000;
     cursor: default;
     font-size: 20px;
     text-decoration: underline;
@@ -83,7 +83,7 @@ li, a, button {
 
 .sign_in {
     padding: 9px 25px;
-    background-color: #4b0181;
+    background-color: #0c63a8;
     border: none;
     color: white;
     border-radius: 50px;
@@ -92,7 +92,7 @@ li, a, button {
 }
 
 .sign_in:hover {
-    background-color: #6800b6;
+    background-color: #074779;
 }
 
 .search {
@@ -103,24 +103,24 @@ li, a, button {
 
 .searchTerm {
     width: 100%;
-    border: 3px solid #6800b6;
+    border: 3px solid #074779;
     border-right: none;
     padding: 5px;
     font-size: 16px;
     border-radius: 5px 0 0 5px;
     outline: none;
     font-weight: bold;
-    color: #6800b6;
+    color: #074779;
 }
 
 .searchTerm:focus {
-    color: #6800b6;
+    color: #074779;
 }
 
 .searchButton {
     width: 40px;
-    border: 1px solid #6800b6;
-    background: #6800b6;
+    border: 1px solid #074779;
+    background: #074779;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
