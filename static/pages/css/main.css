@@ -16,7 +16,6 @@ li, a, button {
 }
 
 .top-nav {
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 100;
@@ -33,7 +32,7 @@ li, a, button {
 }
 
 .main-container {
-    margin: 207px 0 0 0 ;
+    margin: 0 0 0 0 ;
 }
 
 .logo {
@@ -43,10 +42,12 @@ li, a, button {
     cursor: default;
     font-size: 20px;
     text-decoration: underline;
+    margin-bottom: 0;
 }
 
 .nav__links {
     list-style: none;
+    margin-bottom: 0;
 }
 
 .nav__links li {
