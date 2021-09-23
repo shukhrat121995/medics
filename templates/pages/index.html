@@ -2,5 +2,9 @@
 {% load static %}
 
 {% block content %}
-  <div style="height: 1000px; background-color: rgba(13,110,253,0.09); border-radius: 7px; margin: 1rem 1rem 1rem 0"></div>
+  <div id="persons_list" style="height: 1000px; background-color: rgba(13,110,253,0.09); border-radius: 7px; margin: 1rem 1rem 1rem 0">
+  {% for person in persons %}
+    <p>{{ person.name }}</p>
+  {% endfor %}
+  </div>
 {% endblock %}
