@@ -11,7 +11,7 @@ li, a, button {
     font-family: "Monda", sans-serif;
     font-weight: 600;
     font-size: 16px;
-    color: #4997c9;
+    color: #c2dbfe;
     text-decoration: none;
 }
 
@@ -19,7 +19,7 @@ li, a, button {
     top: 0;
     width: 100%;
     z-index: 100;
-    height: 207px;
+    height: 107px;
     background-color: #66afe9;
     border-bottom-left-radius: 77px;
 }
@@ -120,8 +120,8 @@ li, a, button {
 
 .searchButton {
     width: 40px;
-    border: 1px solid #074779;
-    background: #074779;
+    border: 1px solid #86b7fe;
+    background: #86b7fe;
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -135,7 +135,5 @@ li, a, button {
 
 /*Resize the wrap to see the search bar change!*/
 .wrap {
-    width: 50%;
-    padding: 30px 0 0 0;
-    margin: 0 auto;
+    margin: 1rem 1rem 1rem 0;
 }

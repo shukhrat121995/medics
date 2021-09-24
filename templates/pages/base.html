@@ -32,53 +32,57 @@
       </a>
     </div>
   </header>
-  <div class="wrap">
-    <div class="search">
-      <input id="search_query" type="text" class="searchTerm" placeholder="Search">
-      <button type="submit" class="searchButton" onclick="ShowPersons(document.getElementById('search_query').value);">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
-  </div>
+
 </div>
 
 <div class="main-container">
-  <div class="row" style="margin-left: 0; margin-right: 0;">
-    <div class="col-md-3" style="margin-top: 1rem">
-      <div class="row px-3 py-2" style="padding-top: 0!important;">
-        <select class="form-select" aria-label="Gender">
-          <option selected>Gender</option>
-          <option value="1">Male</option>
-          <option value="2">Female</option>
-        </select>
+  {% block main %}
+    <div class="row" style="margin-left: 0; margin-right: 0;">
+      <div class="col-md-3" style="margin-top: 1rem">
+        <div class="row px-3 py-2" style="padding-top: 0!important;">
+          <select id="gender_id" class="form-select" aria-label="Gender">
+            <option value = "" selected>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="row px-3 py-2">
+          <select class="form-select" aria-label="Language">
+            <option selected>Language</option>
+            <option value="1">Finnish</option>
+            <option value="2">Sweden</option>
+          </select>
+        </div>
+        <div class="row px-3 py-2">
+          <select class="form-select" aria-label="Member of FLS">
+            <option selected>Member of FLS</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+          </select>
+        </div>
+        <div class="row px-3 py-2">
+          <select class="form-select" aria-label="Member of Duodecim">
+            <option selected>Member of Duodecim</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+          </select>
+        </div>
       </div>
-      <div class="row px-3 py-2">
-        <select class="form-select" aria-label="Language">
-          <option selected>Language</option>
-          <option value="1">Finnish</option>
-          <option value="2">Sweden</option>
-        </select>
-      </div>
-      <div class="row px-3 py-2">
-        <select class="form-select" aria-label="Member of FLS">
-          <option selected>Member of FLS</option>
-          <option value="1">Yes</option>
-          <option value="2">No</option>
-        </select>
-      </div>
-      <div class="row px-3 py-2">
-        <select class="form-select" aria-label="Member of Duodecim">
-          <option selected>Member of Duodecim</option>
-          <option value="1">Yes</option>
-          <option value="2">No</option>
-        </select>
+      <div class="col" style="padding-left: 0; padding-right: 0">
+        <div class="wrap">
+          <div class="search shadow-sm">
+            <input id="search_query" type="text" class="form-control" placeholder="Search">
+            <button type="submit" class="searchButton"
+                    onclick="ShowPersons();">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+        {% block content %}
+        {% endblock content%}
       </div>
     </div>
-    <div class="col" style="padding-left: 0; padding-right: 0">
-      {% block content %}
-      {% endblock %}
-    </div>
-  </div>
+  {% endblock main %}
 </div>
 </body>
 </html>
@@ -91,4 +95,6 @@
             ShowPersons(document.getElementById('search_query').value);
         }
     });
+
+
 </script>

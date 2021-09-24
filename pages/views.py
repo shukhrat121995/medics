@@ -19,10 +19,15 @@ def getpersons(request):
     if request.method == "GET":
         query = request.GET["query"]
         query = set(query.split())
+        p_gender = request.GET["gender"]
+
         if query:
             persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in query])).order_by('-created_at')
         else:
             persons = Person.objects.all().order_by('-created_at')
+
+        if p_gender:
+            persons = persons.filter(gender=p_gender)
 
         context = {
             'persons': persons
