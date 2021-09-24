@@ -38,7 +38,7 @@ li, a, button {
 .logo {
     font-family: "Monda", sans-serif;
     font-weight: 600;
-    color: #000000;
+    color: #ffffff;
     cursor: default;
     font-size: 20px;
     text-decoration: underline;
@@ -127,6 +127,10 @@ li, a, button {
     border-radius: 0 5px 5px 0;
     cursor: pointer;
     font-size: 20px;
+}
+
+.icon-hover:hover{
+    color: #66afe9!important;
 }
 
 /*Resize the wrap to see the search bar change!*/
