@@ -14,9 +14,9 @@
     <tr onclick="window.location='#';" style="cursor:pointer;">
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{ person.name }}</td>
-      <td>{{ person.gender }}</td>
-      <td>01.02.1995</td>
-      <td>01.02.2100</td>
+      <td>{{ person.gender|default:"" }}</td>
+      <td>{{ person.birth|default:"" }}</td>
+      <td>{{ person.death|default:"" }}</td>
       <td><i class="fa fa-chevron-right icon-hover"></i></td>
     </tr>
   {% endfor %}

@@ -7,8 +7,7 @@ from .models import Person
 
 
 def index(request):
-    #persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in search]))
-    persons = Person.objects.all()
+    persons = Person.objects.all().order_by('-created_at')
     context = {
         'persons': persons
     }
@@ -21,11 +20,13 @@ def getpersons(request):
         query = request.GET["query"]
         query = set(query.split())
         if query:
-            persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in query]))
+            persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in query])).order_by('-created_at')
         else:
-            persons = Person.objects.all()
+            persons = Person.objects.all().order_by('-created_at')
+
         context = {
             'persons': persons
         }
+
         return render(request, 'ajax/list_view.html', context)
 
