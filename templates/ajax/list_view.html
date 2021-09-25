@@ -15,8 +15,8 @@
       <th scope="row">{{ forloop.counter }}</th>
       <td>{{ person.name }}</td>
       <td>{{ person.gender|default:"" }}</td>
-      <td>{{ person.birth|default:"" }}</td>
-      <td>{{ person.death|default:"" }}</td>
+      <td>{{ person.birth|date:"d/m/Y"|default:"" }}</td>
+      <td>{{ person.death|date:"d/m/Y"|default:"" }}</td>
       <td><i class="fa fa-chevron-right icon-hover"></i></td>
     </tr>
   {% endfor %}
