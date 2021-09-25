@@ -11,7 +11,12 @@
   <script src="{% static 'pages/js/main.js' %}"></script>
   <link rel="stylesheet" href="{% static 'pages/css/font-awesome.min.css' %}">
   <link rel="stylesheet" href="{% static 'pages/css/bootstrap.min.css' %}">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Css Link -->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet"
+        type="text/css"/>
+  <!-- js Link-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
   <script src="{% static 'pages/js/bootstrap.min.js' %}"></script>
   <title>Medics</title>
 </head>
@@ -22,7 +27,7 @@
       <h3 class="logo">MEDICS</h3>
       <nav>
         <ul class="nav__links">
-          <li><a href="#">Home</a></li>
+          <li><a href="{% url 'index' %}">Home</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Charts</a></li>
         </ul>
@@ -41,31 +46,61 @@
       <div class="col-md-3" style="margin-top: 1rem">
         <div class="row px-3 py-2" style="padding-top: 0!important;">
           <select id="gender_id" class="form-select" aria-label="Gender">
-            <option value = "" selected>Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
+            <option value="" selected>Gender</option>
+            <option value="Male">Gender: Male</option>
+            <option value="Female">Gender: Female</option>
           </select>
         </div>
         <div class="row px-3 py-2">
           <select class="form-select" aria-label="Language">
             <option selected>Language</option>
-            <option value="1">Finnish</option>
-            <option value="2">Sweden</option>
+            <option value="1">Language: Finnish</option>
+            <option value="2">Language: Sweden</option>
           </select>
         </div>
         <div class="row px-3 py-2">
           <select class="form-select" aria-label="Member of FLS">
             <option selected>Member of FLS</option>
-            <option value="1">Yes</option>
-            <option value="2">No</option>
+            <option value="1">Member of FLS: Yes</option>
+            <option value="2">Member of FLS: No</option>
           </select>
         </div>
         <div class="row px-3 py-2">
           <select class="form-select" aria-label="Member of Duodecim">
             <option selected>Member of Duodecim</option>
-            <option value="1">Yes</option>
-            <option value="2">No</option>
+            <option value="1">Member of Duodecim: Yes</option>
+            <option value="2">Member of Duodecim: No</option>
           </select>
+        </div>
+        <div class="row px-3 py-2">
+          <div class="w-100 px-0">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Range of Birth Date</div>
+            </div>
+          </div>
+        </div>
+        <div class="row px-3 py-2">
+          <div class="w-50 px-0" style="padding-right: calc(var(--bs-gutter-x) * .5/2)!important;">
+            <input class="form-control text-center" id="birthFromDate" placeholder="From"/>
+          </div>
+          <div class="w-50 px-0" style="padding-left: calc(var(--bs-gutter-x) * .5/2)!important;">
+            <input class="form-control text-center" id="birthToDate" placeholder="To"/>
+          </div>
+        </div>
+        <div class="row px-3 py-2">
+          <div class="w-100 px-0">
+            <div class="input-group-prepend">
+              <div class="input-group-text">Range of Death Date</div>
+            </div>
+          </div>
+        </div>
+        <div class="row px-3 py-2">
+          <div class="w-50 px-0" style="padding-right: calc(var(--bs-gutter-x) * .5/2)!important;">
+            <input class="form-control text-center" id="deathFromDate" placeholder="From"/>
+          </div>
+          <div class="w-50 px-0" style="padding-left: calc(var(--bs-gutter-x) * .5/2)!important;">
+            <input class="form-control text-center" id="deathToDate" placeholder="To"/>
+          </div>
         </div>
       </div>
       <div class="col" style="padding-left: 0; padding-right: 0">
@@ -79,7 +114,7 @@
           </div>
         </div>
         {% block content %}
-        {% endblock content%}
+        {% endblock content %}
       </div>
     </div>
   {% endblock main %}
@@ -88,6 +123,49 @@
 </html>
 
 <script>
+    $(document).ready(function () {
+        $("#birthFromDate").datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: 1,
+            //startDate: new Date(),
+            todayHighlight: false,
+            //endDate: new Date()
+        }).on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('#birthToDate').datepicker('setStartDate', minDate);
+            $("#birthToDate").val($("#birthFromDate").val());
+            $(this).datepicker('hide');
+        });
+
+        $("#birthToDate").datepicker({
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            //endDate: new Date()
+        }).on('changeDate', function (selected) {
+            $(this).datepicker('hide');
+        });
+
+        $("#deathFromDate").datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: 1,
+            //startDate: new Date(),
+            todayHighlight: false,
+            //endDate: new Date()
+        }).on('changeDate', function (selected) {
+            var minDate = new Date(selected.date.valueOf());
+            $('#deathToDate').datepicker('setStartDate', minDate);
+            $("#deathToDate").val($("#deathFromDate").val());
+            $(this).datepicker('hide');
+        });
+
+        $("#deathToDate").datepicker({
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            //endDate: new Date()
+        }).on('changeDate', function (selected) {
+            $(this).datepicker('hide');
+        });
+    });
     const node = document.getElementById('search_query');
     node.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {

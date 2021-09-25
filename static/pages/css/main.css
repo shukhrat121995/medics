@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
 
+:root {
+  --primary: #86b7fe;
+  --secondary: #0c63a8;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,7 +25,7 @@ li, a, button {
     width: 100%;
     z-index: 100;
     height: 107px;
-    background-color: #66afe9;
+    background-color: var(--primary);
     border-bottom-left-radius: 77px;
 }
 
@@ -84,7 +89,7 @@ li, a, button {
 
 .sign_in {
     padding: 9px 25px;
-    background-color: #0c63a8;
+    background-color: var(--secondary);
     border: none;
     color: white;
     border-radius: 50px;
@@ -104,24 +109,20 @@ li, a, button {
 
 .searchTerm {
     width: 100%;
-    border: 3px solid #074779;
+    border: 3px solid var(--secondary);
     border-right: none;
     padding: 5px;
     font-size: 16px;
     border-radius: 5px 0 0 5px;
     outline: none;
     font-weight: bold;
-    color: #074779;
-}
-
-.searchTerm:focus {
-    color: #074779;
+    color: var(--secondary);
 }
 
 .searchButton {
     width: 40px;
-    border: 1px solid #86b7fe;
-    background: #86b7fe;
+    border: 1px solid var(--primary);
+    background: var(--primary);
     text-align: center;
     color: #fff;
     border-radius: 0 5px 5px 0;
@@ -130,7 +131,7 @@ li, a, button {
 }
 
 .icon-hover:hover{
-    color: #66afe9!important;
+    color: var(--primary)!important;
 }
 
 /*Resize the wrap to see the search bar change!*/
