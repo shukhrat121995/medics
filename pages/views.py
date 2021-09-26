@@ -11,7 +11,7 @@ def index(request):
     context = {
         'persons': persons
     }
-    return render(request, 'pages/index.html', context)
+    return render(request, 'pages/base.html', context)
 
 
 def getpersons(request):

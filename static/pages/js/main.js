@@ -1,3 +1,56 @@
+$(document).ready(function () {
+    ShowPersons();
+    $("#birthFromDate").datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: 1,
+        //startDate: new Date(),
+        todayHighlight: false,
+        //endDate: new Date()
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('#birthToDate').datepicker('setStartDate', minDate);
+        $("#birthToDate").val($("#birthFromDate").val());
+        $(this).datepicker('hide');
+    });
+
+    $("#birthToDate").datepicker({
+        format: 'dd/mm/yyyy',
+        todayHighlight: true,
+        //endDate: new Date()
+    }).on('changeDate', function (selected) {
+        $(this).datepicker('hide');
+    });
+
+    $("#deathFromDate").datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: 1,
+        //startDate: new Date(),
+        todayHighlight: false,
+        //endDate: new Date()
+    }).on('changeDate', function (selected) {
+        var minDate = new Date(selected.date.valueOf());
+        $('#deathToDate').datepicker('setStartDate', minDate);
+        $("#deathToDate").val($("#deathFromDate").val());
+        $(this).datepicker('hide');
+    });
+
+    $("#deathToDate").datepicker({
+        format: 'dd/mm/yyyy',
+        todayHighlight: true,
+        //endDate: new Date()
+    }).on('changeDate', function (selected) {
+        $(this).datepicker('hide');
+    });
+    const node = document.getElementById('search_query');
+    node.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            ShowPersons(document.getElementById('search_query').value);
+        }
+    });
+});
+
+
 function ShowPersons() {
     query = document.getElementById('search_query').value
     gender = document.getElementById("gender_id");
