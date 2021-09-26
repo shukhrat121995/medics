@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Monda&display=swap');
 
 :root {
-  --primary: #86b7fe;
-  --secondary: #0c63a8;
+  --primary: #0d6efd;
+  --secondary: #0b4fbd;
 }
 
 * {
@@ -16,7 +16,6 @@ li, a, button {
     font-family: "Monda", sans-serif;
     font-weight: 600;
     font-size: 16px;
-    color: #c2dbfe;
     text-decoration: none;
 }
 
@@ -63,11 +62,12 @@ li, a, button {
 .nav__links li a {
     position: relative;
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
 }
 
 .nav__links li a:hover {
-    color: #000;
+    color: #ffffff;
+    transition: transform 0.3s ease;
 }
 
 .nav__links li a::before {
@@ -78,7 +78,7 @@ li, a, button {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #000;
+    background-color: #ffffff;
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -98,7 +98,7 @@ li, a, button {
 }
 
 .sign_in:hover {
-    background-color: #074779;
+    background-color: #073b94;
 }
 
 .search {
