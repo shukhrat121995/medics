@@ -1,5 +1,7 @@
 from operator import and_
 from datetime import datetime
+
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
 from functools import reduce
@@ -16,29 +18,33 @@ def index(request):
 
 def getpersons(request):
     """AJAX dynamic modal for query"""
-    if request.method == "GET":
-        query = request.GET["query"]
-        query = set(query.split())
-        p_gender = request.GET["gender"]
+    query = request.GET["query"]
+    query = set(query.split())
+    p_gender = request.GET["gender"]
 
-        birth_from = request.GET["birth_from_date"]
-        birth_to = request.GET["birth_to_date"]
+    birth_from = request.GET["birth_from_date"]
+    birth_to = request.GET["birth_to_date"]
 
-        if query:
-            persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in query])).order_by('-created_at')
-        else:
-            persons = Person.objects.all().order_by('-created_at')
+    if query:
+        persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in query])).order_by('-created_at')
+    else:
+        persons = Person.objects.all().order_by('-created_at')
 
-        if p_gender:
-            persons = persons.filter(gender=p_gender)
+    if p_gender:
+        persons = persons.filter(gender=p_gender)
 
-        if birth_from and birth_to:
-            birth_from = datetime.strptime(birth_from, '%d/%m/%Y').strftime('%Y-%m-%d')
-            birth_to = datetime.strptime(birth_to, '%d/%m/%Y').strftime('%Y-%m-%d')
-            persons = persons.filter(birth__range=[birth_from, birth_to])
+    if birth_from and birth_to:
+        birth_from = datetime.strptime(birth_from, '%d/%m/%Y').strftime('%Y-%m-%d')
+        birth_to = datetime.strptime(birth_to, '%d/%m/%Y').strftime('%Y-%m-%d')
+        persons = persons.filter(birth__range=[birth_from, birth_to])
 
-        context = {
-            'persons': persons
-        }
+    paginator = Paginator(persons, 1)  # Show 5 contacts per page.
 
-        return render(request, 'ajax/list_view.html', context)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'page_obj': page_obj
+    }
+
+    return render(request, 'ajax/list_view.html', context)
