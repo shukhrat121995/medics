@@ -1,6 +1,5 @@
 from operator import and_
 from datetime import datetime
-
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render
