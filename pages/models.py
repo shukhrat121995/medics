@@ -42,3 +42,20 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Spouse(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True)
+    name = models.CharField(max_length=255, unique=True)
+    occupation = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Children(models.Model):
+    person = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True)
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name

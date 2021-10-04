@@ -58,7 +58,6 @@ function ShowPersons(page_number) {
     birth_from_date = document.getElementById('birthFromDate').value
     birth_to_date = document.getElementById('birthToDate').value
 
-    console.log(page_number)
     $.ajax({
         url: "../getpersons",
         type: "GET",
