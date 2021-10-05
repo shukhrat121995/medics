@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Matriculation(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)
@@ -12,6 +14,8 @@ class Matriculation(models.Model):
 
 
 class Premedical(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)
@@ -22,6 +26,8 @@ class Premedical(models.Model):
 
 
 class CandidateOfPhilosophy(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)
@@ -32,6 +38,8 @@ class CandidateOfPhilosophy(models.Model):
 
 
 class CandidateOfMedicine(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)
@@ -42,6 +50,8 @@ class CandidateOfMedicine(models.Model):
 
 
 class LicentiateOfPhilosophy(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)
@@ -52,6 +62,8 @@ class LicentiateOfPhilosophy(models.Model):
 
 
 class Dispensation(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)
@@ -62,6 +74,8 @@ class Dispensation(models.Model):
 
 
 class Legislation(models.Model):
+    class Meta:
+        ordering = ['-id']
     person = models.OneToOneField('pages.Person', on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     school = models.CharField(max_length=255, blank=True)

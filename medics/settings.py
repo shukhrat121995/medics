@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     # local
     'pages',
     'family',
-    'examinations'
+    'examinations',
+    'membership'
 ]
 
 MIDDLEWARE = [

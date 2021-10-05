@@ -3,6 +3,9 @@ from family.models import Father, Mother
 
 
 class Person(models.Model):
+    class Meta:
+        ordering = ['-id']
+
     GENDER = [
         ('Male', 'Male'),
         ('Female', 'Female'),
