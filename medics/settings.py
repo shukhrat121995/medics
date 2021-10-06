@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'pages',
     'family',
     'examinations',
-    'membership'
+    'membership',
+    'career'
 ]
 
 MIDDLEWARE = [
