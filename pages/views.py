@@ -5,6 +5,9 @@ from django.db.models import Q
 from django.shortcuts import render
 from functools import reduce
 from .models import Person
+from .generic import get_or_none
+from examinations.models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateOfMedicine, \
+    LicentiateOfPhilosophy, Dispensation, Legislation
 
 
 def index(request):
@@ -24,13 +27,24 @@ def charts(request):
 
 
 def details(request, pk):
-    try:
-        person = Person.objects.get(pk=pk)
-    except Person.DoesNotExist:
-        person = None
+    person = get_or_none(Person, pk=pk)
+    matriculation = get_or_none(Matriculation, person=pk)
+    premedical = get_or_none(Premedical, person=pk)
+    candidate_of_philosophy = get_or_none(CandidateOfPhilosophy, person=pk)
+    candidate_of_medicine = get_or_none(CandidateOfMedicine, person=pk)
+    licentiate_of_medicine = get_or_none(LicentiateOfPhilosophy, person=pk)
+    dispensation = get_or_none(Dispensation, person=pk)
+    legislation = get_or_none(Legislation, person=pk)
 
     context = {
-        'person': person
+        'person': person,
+        'matriculation': matriculation,
+        'premedical': premedical,
+        'candidate_of_philosophy': candidate_of_philosophy,
+        'candidate_of_medicine': candidate_of_medicine,
+        'licentiate_of_medicine': licentiate_of_medicine,
+        'dispensation': dispensation,
+        'legislation': legislation,
     }
     return render(request, 'pages/details.html', context)
 

@@ -39,18 +39,62 @@
     <div class="card shadow-sm" style="margin-top: 1rem">
       <h5 class="card-header">Examinations</h5>
       <div class="card-body">
-        <div class="row">
-          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
-          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
-        </div>
-        <div class="row">
-          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
-          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
-        </div>
-        <div class="row">
-          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
-          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
-        </div>
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">School</th>
+            <th scope="col">Grade</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Matriculation</td>
+            <td>{{ matriculation.date }}</td>
+            <td>{{ matriculation.school }}</td>
+            <td>{{ matriculation.grade }}</td>
+          </tr>
+          <tr>
+            <td>Premedical</td>
+            <td>{{ premedical.date }}</td>
+            <td>{{ premedical.school }}</td>
+            <td>{{ premedical.grade }}</td>
+          </tr>
+          <tr>
+            <td>Candidate of Philosophy</td>
+            <td>{{ candidate_of_philosophy.date }}</td>
+            <td>{{ candidate_of_philosophy.school }}</td>
+            <td>{{ candidate_of_philosophy.grade }}</td>
+          </tr>
+          <tr>
+            <td>Candidate of Medicine</td>
+            <td>{{ candidate_of_medicine.date }}</td>
+            <td>{{ candidate_of_medicine.school }}</td>
+            <td>{{ candidate_of_medicine.grade }}</td>
+          </tr>
+          <tr>
+            <td>Licentiate of Medicine</td>
+            <td>{{ licentiate_of_medicine.date }}</td>
+            <td>{{ licentiate_of_medicine.school }}</td>
+            <td>{{ licentiate_of_medicine.grade }}</td>
+          </tr>
+          {% if person.gender == 'Female' %}
+            <tr>
+              <td>Dispensation</td>
+              <td>{{ dispensation.date }}</td>
+              <td>{{ dispensation.school }}</td>
+              <td>{{ dispensation.grade }}</td>
+            </tr>
+          {% endif %}
+          <tr>
+            <td>Legalisation</td>
+            <td>{{ legislation.date }}</td>
+            <td>{{ legislation.school }}</td>
+            <td>{{ legislation.grade }}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="card shadow-sm" style="margin-top: 1rem">
