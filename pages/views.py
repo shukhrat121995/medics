@@ -15,6 +15,14 @@ def index(request):
     return render(request, 'pages/base.html', context)
 
 
+def about(request):
+    return render(request, 'pages/about.html', {})
+
+
+def charts(request):
+    return render(request, 'pages/charts.html', {})
+
+
 def getpersons(request):
     """AJAX dynamic modal for query"""
     query = request.GET["query"]
