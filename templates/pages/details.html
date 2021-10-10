@@ -1,0 +1,89 @@
+{% extends 'pages/base.html' %}
+
+{% block main %}
+  <div class="container" style="margin-top: 1rem">
+    <div class="card shadow-sm">
+      <h5 class="card-header">Profile</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
+          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
+          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
+          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm" style="margin-top: 1rem">
+      <h5 class="card-header">Family</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
+          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
+          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
+          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm" style="margin-top: 1rem">
+      <h5 class="card-header">Examinations</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
+          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
+          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
+          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm" style="margin-top: 1rem">
+      <h5 class="card-header">Career</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
+          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
+          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
+        </div>
+        <div class="row">
+          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
+          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm" style="margin-top: 1rem; margin-bottom: 2rem">
+      <h5 class="card-header">Membership</h5>
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <p>Member of FLS: <b>{{ person.memberoffls.start_date }} &#8212;
+              {{ person.memberoffls.end_date }}</b></p>
+          </div>
+          <div class="col">
+            <p>Member of Duodecim: <b>{{ person.memberofduodecim.start_date }} &#8212;
+              {{ person.memberofduodecim.end_date }}</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock main %}

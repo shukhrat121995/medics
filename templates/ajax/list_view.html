@@ -10,7 +10,7 @@
   </thead>
   <tbody>
   {% for person in page_obj %}
-    <tr onclick="window.location='#';" style="cursor:pointer;">
+    <tr onclick="window.open('{% url 'details' pk=person.pk %}', '_blank')" style="cursor:pointer;">
       <td>{{ person.name }}</td>
       <td>{{ person.gender|default:"" }}</td>
       <td>{{ person.birth|date:"d/m/Y"|default:"" }}</td>
@@ -21,6 +21,7 @@
   </tbody>
 </table>
 
+<!-- Pagination starts -->
 {% if page_obj %}
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center" style="cursor: pointer">
@@ -62,3 +63,4 @@
     </ul>
   </nav>
 {% endif %}
+<!-- Pagination ends -->

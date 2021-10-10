@@ -23,6 +23,18 @@ def charts(request):
     return render(request, 'pages/charts.html', {})
 
 
+def details(request, pk):
+    try:
+        person = Person.objects.get(pk=pk)
+    except Person.DoesNotExist:
+        person = None
+
+    context = {
+        'person': person
+    }
+    return render(request, 'pages/details.html', context)
+
+
 def getpersons(request):
     """AJAX dynamic modal for query"""
     query = request.GET["query"]
