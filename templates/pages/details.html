@@ -6,16 +6,16 @@
       <h5 class="card-header">Profile</h5>
       <div class="card-body">
         <div class="row">
-          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
-          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
+          <div class="col"><p class="mb-0">Name: <b>{{ person.name }}</b></p></div>
+          <div class="col"><p class="mb-0">Gender: <b>{{ person.gender }}</b></p></div>
         </div>
         <div class="row">
-          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
-          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
+          <div class="col"><p class="mb-0">Date of birth: <b>{{ person.birth }}</b></p></div>
+          <div class="col"><p class="mb-0">Date of death: <b>{{ person.death }}</b></p></div>
         </div>
         <div class="row">
-          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
-          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
+          <div class="col"><p class="mb-0">Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
+          <div class="col"><p class="mb-0">Language: <b>{{ person.language }}</b></p></div>
         </div>
       </div>
     </div>
@@ -23,17 +23,47 @@
       <h5 class="card-header">Family</h5>
       <div class="card-body">
         <div class="row">
-          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
-          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
+          <div class="col"><p class="mb-0">Father: <b>{{ person.father }}</b></p></div>
+          <div class="col"><p class="mb-0">Occupation: <b>{{ person.father.occupation }}</b></p></div>
         </div>
         <div class="row">
-          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
-          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
+          <div class="col"><p class="mb-0">Mother: <b>{{ person.mother }}</b></p></div>
+          <div class="col"><p class="mb-0">Occupation: <b>{{ person.mother.occupation }}</b></p></div>
         </div>
-        <div class="row">
-          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
-          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
-        </div>
+        <table class="table table-hover table-bordered mt-3">
+          <thead>
+          <tr>
+            <th scope="col">Spouse</th>
+            <th scope="col">Date of marriage</th>
+            <th scope="col">Occupation</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for spouse in spouses %}
+            <tr>
+              <td>{{ spouse.name }}</td>
+              <td>{{ spouse.date_of_marriage }}</td>
+              <td>{{ spouse.occupation }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <table class="table table-hover table-bordered mt-3">
+          <thead>
+          <tr>
+            <th scope="col">Child</th>
+            <th scope="col">Date of birth</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for child in children %}
+            <tr>
+              <td>{{ child.name }}</td>
+              <td>{{ child.date_of_birth }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="card shadow-sm" style="margin-top: 1rem">
@@ -119,11 +149,11 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <p>Member of FLS: <b>{{ person.memberoffls.start_date }} &#8212;
+            <p class="mb-0">Member of FLS: <b>{{ person.memberoffls.start_date }} &#8212;
               {{ person.memberoffls.end_date }}</b></p>
           </div>
           <div class="col">
-            <p>Member of Duodecim: <b>{{ person.memberofduodecim.start_date }} &#8212;
+            <p class="mb-0">Member of Duodecim: <b>{{ person.memberofduodecim.start_date }} &#8212;
               {{ person.memberofduodecim.end_date }}</b></p>
           </div>
         </div>

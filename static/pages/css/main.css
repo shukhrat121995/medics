@@ -142,3 +142,10 @@ li, a, button {
 .wrap {
     margin: 1rem 1rem 1rem 0;
 }
+
+.horizontal-ruler {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}

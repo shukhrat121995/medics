@@ -6,6 +6,7 @@ from django.shortcuts import render
 from functools import reduce
 from .models import Person
 from .generic import get_or_none
+from family.models import Spouse, Children
 from examinations.models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateOfMedicine, \
     LicentiateOfPhilosophy, Dispensation, Legislation
 
@@ -35,6 +36,8 @@ def details(request, pk):
     licentiate_of_medicine = get_or_none(LicentiateOfPhilosophy, person=pk)
     dispensation = get_or_none(Dispensation, person=pk)
     legislation = get_or_none(Legislation, person=pk)
+    spouses = Spouse.objects.filter(person=pk).all()
+    children = Children.objects.filter(person=pk).all()
 
     context = {
         'person': person,
@@ -45,6 +48,8 @@ def details(request, pk):
         'licentiate_of_medicine': licentiate_of_medicine,
         'dispensation': dispensation,
         'legislation': legislation,
+        'spouses': spouses,
+        'children': children
     }
     return render(request, 'pages/details.html', context)
 
