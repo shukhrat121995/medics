@@ -3,7 +3,7 @@
 {% block main %}
   <div class="container" style="margin-top: 1rem">
     <div class="card shadow-sm">
-      <h5 class="card-header">Profile</h5>
+      <h5 class="card-header bg-primary text-white">Profile</h5>
       <div class="card-body">
         <div class="row">
           <div class="col"><p class="mb-0">Name: <b>{{ person.name }}</b></p></div>
@@ -17,10 +17,23 @@
           <div class="col"><p class="mb-0">Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
           <div class="col"><p class="mb-0">Language: <b>{{ person.language }}</b></p></div>
         </div>
+        <div class="row">
+          <div class="col">
+            <p class="mb-0 text-danger">First public post:
+              <b>{{ first_public_post.name_of_post }}, {{ first_public_post.date }}
+              </b>
+            </p>
+          </div>
+          <div class="col">
+            <p class="mb-0 text-primary">Higest post:
+              <b>{{ highest_post.name_of_post }}, {{ highest_post.date }}</b>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="card shadow-sm" style="margin-top: 1rem">
-      <h5 class="card-header">Family</h5>
+      <h5 class="card-header bg-primary text-white">Family</h5>
       <div class="card-body">
         <div class="row">
           <div class="col"><p class="mb-0">Father: <b>{{ person.father }}</b></p></div>
@@ -67,7 +80,7 @@
       </div>
     </div>
     <div class="card shadow-sm" style="margin-top: 1rem">
-      <h5 class="card-header">Examinations</h5>
+      <h5 class="card-header bg-primary text-white">Examinations</h5>
       <div class="card-body">
         <table class="table table-hover table-bordered">
           <thead>
@@ -128,24 +141,88 @@
       </div>
     </div>
     <div class="card shadow-sm" style="margin-top: 1rem">
-      <h5 class="card-header">Career</h5>
+      <h5 class="card-header bg-primary text-white">Career</h5>
       <div class="card-body">
-        <div class="row">
-          <div class="col"><p>Name: <b>{{ person.name }}</b></p></div>
-          <div class="col"><p>Gender: <b>{{ person.gender }}</b></p></div>
-        </div>
-        <div class="row">
-          <div class="col"><p>Date of birth: <b>{{ person.birth }}</b></p></div>
-          <div class="col"><p>Date of death: <b>{{ person.death }}</b></p></div>
-        </div>
-        <div class="row">
-          <div class="col"><p>Place of birth: <b>{{ person.place_of_birth }}</b></p></div>
-          <div class="col"><p>Language: <b>{{ person.language }}</b></p></div>
-        </div>
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">Internship</th>
+            <th scope="col">Name of Clinic or Department</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for internship in internships %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ internship.name_of_clinic_or_department }}</td>
+              <td>{{ internship.start_date }}</td>
+              <td>{{ internship.end_date }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">Doctoral degree</th>
+            <th scope="col">Field(s) of Doctorate</th>
+            <th scope="col">Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for doctoral_degree in doctoral_degrees %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ doctoral_degree.field_of_doctorate }}</td>
+              <td>{{ doctoral_degree.date }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">Speciality</th>
+            <th scope="col">Name of Speciality</th>
+            <th scope="col">Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for speciality in specialities %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ speciality.name_of_speciality }}</td>
+              <td>{{ speciality.date }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">Docentship</th>
+            <th scope="col">Name of docentship(s)</th>
+            <th scope="col">Start date</th>
+            <th scope="col">End date</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for docentship in docentships %}
+            <tr>
+              <td>{{ forloop.counter }}</td>
+              <td>{{ docentship.name_of_docentship }}</td>
+              <td>{{ docentship.start_date }}</td>
+              <td>{{ docentship.end_date }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="card shadow-sm" style="margin-top: 1rem; margin-bottom: 2rem">
-      <h5 class="card-header">Membership</h5>
+      <h5 class="card-header bg-primary text-white">Membership</h5>
       <div class="card-body">
         <div class="row">
           <div class="col">

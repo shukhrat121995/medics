@@ -7,6 +7,7 @@ from functools import reduce
 from .models import Person
 from .generic import get_or_none
 from family.models import Spouse, Children
+from career.models import Internship, DoctoralDegree, Speciality, Docentship, FirstPublicPost, HighestPost
 from examinations.models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateOfMedicine, \
     LicentiateOfPhilosophy, Dispensation, Legislation
 
@@ -38,6 +39,12 @@ def details(request, pk):
     legislation = get_or_none(Legislation, person=pk)
     spouses = Spouse.objects.filter(person=pk).all()
     children = Children.objects.filter(person=pk).all()
+    internships = Internship.objects.filter(person=pk).all()
+    doctoral_degrees = DoctoralDegree.objects.filter(person=pk).all()
+    specialities = Speciality.objects.filter(person=pk).all()
+    docentships = Docentship.objects.filter(person=pk).all()
+    first_public_post = get_or_none(FirstPublicPost, person=pk)
+    highest_post = get_or_none(HighestPost, person=pk)
 
     context = {
         'person': person,
@@ -49,7 +56,13 @@ def details(request, pk):
         'dispensation': dispensation,
         'legislation': legislation,
         'spouses': spouses,
-        'children': children
+        'children': children,
+        'internships': internships,
+        'doctoral_degrees': doctoral_degrees,
+        'specialities': specialities,
+        'docentships': docentships,
+        'first_public_post': first_public_post,
+        'highest_post': highest_post
     }
     return render(request, 'pages/details.html', context)
 
