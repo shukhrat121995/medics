@@ -89,7 +89,7 @@ def getpersons(request):
         birth_to = datetime.strptime(birth_to, '%d/%m/%Y').strftime('%Y-%m-%d')
         persons = persons.filter(birth__range=[birth_from, birth_to])
 
-    paginator = Paginator(persons, 5)  # Show 1 person per page.
+    paginator = Paginator(persons, 25)  # Show 1 person per page.
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
