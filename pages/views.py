@@ -77,7 +77,7 @@ def getpersons(request):
     birth_to = request.GET["birth_to_date"]
 
     if query:
-        persons = Person.objects.filter(reduce(and_, [Q(name__contains=s) for s in query])).order_by('-created_at')
+        persons = Person.objects.filter(reduce(and_, [Q(name__icontains=s) for s in query])).order_by('-created_at')
     else:
         persons = Person.objects.all().order_by('-created_at')
 
