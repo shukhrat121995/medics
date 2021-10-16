@@ -6,7 +6,7 @@ from .models import MemberOfFls, MemberOfDuodecim
 class AdminMemberOfFls(admin.ModelAdmin):
     list_display = ['person', 'start_date', 'end_date']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -14,5 +14,5 @@ class AdminMemberOfFls(admin.ModelAdmin):
 class AdminMemberOfDuodecim(admin.ModelAdmin):
     list_display = ['person', 'start_date', 'end_date']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50

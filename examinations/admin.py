@@ -7,7 +7,7 @@ from .models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateO
 class AdminMatriculation(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -15,7 +15,7 @@ class AdminMatriculation(admin.ModelAdmin):
 class AdminPremedical(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -23,7 +23,7 @@ class AdminPremedical(admin.ModelAdmin):
 class AdminCandidateOfPhilosophy(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -31,7 +31,7 @@ class AdminCandidateOfPhilosophy(admin.ModelAdmin):
 class AdminCandidateOfMedicine(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -39,7 +39,7 @@ class AdminCandidateOfMedicine(admin.ModelAdmin):
 class AdminLicentiateOfPhilosophy(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -47,7 +47,7 @@ class AdminLicentiateOfPhilosophy(admin.ModelAdmin):
 class AdminLegislation(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -55,5 +55,5 @@ class AdminLegislation(admin.ModelAdmin):
 class AdminDispensation(admin.ModelAdmin):
     list_display = ['person', 'date', 'school', 'grade']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50

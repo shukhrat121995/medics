@@ -6,7 +6,7 @@ from .models import Internship, Docentship, DoctoralDegree, FirstPublicPost, Hig
 class AdminInternship(admin.ModelAdmin):
     list_display = ['person', 'start_date', 'end_date', 'name_of_clinic_or_department']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -14,7 +14,7 @@ class AdminInternship(admin.ModelAdmin):
 class AdminDoctoralDegree(admin.ModelAdmin):
     list_display = ['person', 'date', 'field_of_doctorate']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -22,7 +22,7 @@ class AdminDoctoralDegree(admin.ModelAdmin):
 class AdminSpeciality(admin.ModelAdmin):
     list_display = ['person', 'date', 'name_of_speciality']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -30,7 +30,7 @@ class AdminSpeciality(admin.ModelAdmin):
 class AdminDocentship(admin.ModelAdmin):
     list_display = ['person', 'start_date', 'end_date', 'name_of_docentship']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -38,7 +38,7 @@ class AdminDocentship(admin.ModelAdmin):
 class AdminFirstPublicPost(admin.ModelAdmin):
     list_display = ['person', 'date', 'name_of_post']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
 
 
@@ -46,5 +46,5 @@ class AdminFirstPublicPost(admin.ModelAdmin):
 class AdminHighestPost(admin.ModelAdmin):
     list_display = ['person', 'date', 'name_of_post']
     autocomplete_fields = ['person']
-    search_fields = ['person']
+    search_fields = ['person__name']
     list_per_page = 50
