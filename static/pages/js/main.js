@@ -70,6 +70,7 @@ function ShowPersons(page_number) {
         },
         success: function (data) {
             $("#persons_list").html(data);
+            $('html, body').animate({ scrollTop: 0 }, 0);
         }
     });
 }
