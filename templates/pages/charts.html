@@ -1,5 +1,47 @@
 {% extends 'pages/base.html' %}
 
 {% block main %}
-  Display Charts
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
+        <canvas id="myChart" style="max-height: 300px"></canvas>
+      </div>
+      <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
+        <ul class="list-group list-group-flush w-100">
+          <li class="list-group-item">Total number of graduates: {{ graduates }}</li>
+          <li class="list-group-item">Total number of male graduates: {{ male }}</li>
+          <li class="list-group-item">Total number of female graduates: {{ female }}</li>
+          <li class="list-group-item">Average life expectancy: {{ avr_life }} years</li>
+          <li class="list-group-item">Average life expectancy of male graduates: {{ avr_life_male }} years </li>
+          <li class="list-group-item">Average life expectancy of female graduates: {{ avr_life_female }} years</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <script>
+
+      new Chart(document.getElementById("myChart"), {
+          type: 'pie',
+          data: {
+              labels: ["Male", "Female"],
+              datasets: [{
+                  backgroundColor: ["#2c9be7", "#fa2b79"],
+                  data: [{{male}}, {{female}}]
+              }]
+          },
+          options: {
+              plugins: {
+                  legend: {
+                      display: true,
+                      position: 'bottom',
+                  },
+                  title: {
+                      display: false,
+                      text: 'Total Number of Graduates: '
+                  }
+              }
+          }
+      });
+  </script>
 {% endblock main %}

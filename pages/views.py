@@ -1,11 +1,12 @@
 from operator import and_
 from datetime import datetime
 from django.core.paginator import Paginator
+from django.db.models import Avg
 from django.db.models import Q
 from django.shortcuts import render
 from functools import reduce
 from .models import Person
-from .generic import get_or_none
+from .generic import get_or_none, life_expectancy
 from family.models import Spouse, Children
 from career.models import Internship, DoctoralDegree, Speciality, Docentship, FirstPublicPost, HighestPost
 from examinations.models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateOfMedicine, \
@@ -25,7 +26,21 @@ def about(request):
 
 
 def charts(request):
-    return render(request, 'pages/charts.html', {})
+    graduates = Person.objects.all()
+    print(graduates.aggregate(Avg('birth__year')))
+    context = {
+        'graduates': graduates.count(),
+        'male': graduates.filter(gender='Male').count(),
+        'female': graduates.filter(gender='Female').count(),
+        'avr_life': life_expectancy(graduates.aggregate(Avg('birth__year'))['birth__year__avg'],
+                                    graduates.aggregate(Avg('death__year'))['death__year__avg']),
+        'avr_life_male': life_expectancy(graduates.filter(gender='Male').aggregate(Avg('birth__year'))['birth__year__avg'],
+                                    graduates.aggregate(Avg('death__year'))['death__year__avg']),
+        'avr_life_female': life_expectancy(
+            graduates.filter(gender='Female').aggregate(Avg('birth__year'))['birth__year__avg'],
+            graduates.aggregate(Avg('death__year'))['death__year__avg']),
+    }
+    return render(request, 'pages/charts.html', context)
 
 
 def details(request, pk):
