@@ -6,4 +6,4 @@ def get_or_none(classmodel, **kwargs):
 
 
 def life_expectancy(birth, death):
-    return death-birth
+    return round(death-birth, 2)
