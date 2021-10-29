@@ -28,7 +28,7 @@ class AdminSpeciality(admin.ModelAdmin):
 
 @admin.register(Docentship)
 class AdminDocentship(admin.ModelAdmin):
-    list_display = ['person', 'start_date', 'end_date', 'name_of_docentship']
+    list_display = ['person', 'date', 'name_of_docentship']
     autocomplete_fields = ['person']
     search_fields = ['person__name']
     list_per_page = 50

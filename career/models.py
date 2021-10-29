@@ -46,8 +46,7 @@ class Docentship(models.Model):
         ordering = ['-id']
 
     person = models.ForeignKey('pages.Person', on_delete=models.CASCADE)
-    start_date = models.DateField(null=True, blank=True)
-    end_date = models.DateField(null=True, blank=True)
+    date = models.DateField(null=True, blank=True)
 
     name_of_docentship = models.CharField(max_length=255, null=True, blank=True)
 
