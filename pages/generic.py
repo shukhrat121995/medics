@@ -5,5 +5,13 @@ def get_or_none(classmodel, **kwargs):
         return None
 
 
-def life_expectancy(birth, death):
-    return round(death-birth, 2)
+def life_expectancy(persons):
+    ages = list()
+    average = 0
+    for obj in persons:
+        if obj.birth and obj.death:
+            age = obj.death.year - obj.birth.year
+            ages.append(age)
+    if ages and len(ages) > 0:
+        average = sum(ages)/len(ages)
+    return round(average, 2)

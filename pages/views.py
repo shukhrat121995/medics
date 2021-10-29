@@ -32,13 +32,9 @@ def charts(request):
         'graduates': graduates.count(),
         'male': graduates.filter(gender='Male').count(),
         'female': graduates.filter(gender='Female').count(),
-        'avr_life': life_expectancy(graduates.aggregate(Avg('birth__year'))['birth__year__avg'],
-                                    graduates.aggregate(Avg('death__year'))['death__year__avg']),
-        'avr_life_male': life_expectancy(graduates.filter(gender='Male').aggregate(Avg('birth__year'))['birth__year__avg'],
-                                    graduates.aggregate(Avg('death__year'))['death__year__avg']),
-        'avr_life_female': life_expectancy(
-            graduates.filter(gender='Female').aggregate(Avg('birth__year'))['birth__year__avg'],
-            graduates.aggregate(Avg('death__year'))['death__year__avg']),
+        'avr_life': life_expectancy(graduates),
+        'avr_life_male': life_expectancy(graduates.filter(gender='Male').all()),
+        'avr_life_female': life_expectancy(graduates.filter(gender='Female').all()),
     }
     return render(request, 'pages/charts.html', context)
 
