@@ -12,8 +12,26 @@
           <li class="list-group-item">Total number of male graduates: {{ male }}</li>
           <li class="list-group-item">Total number of female graduates: {{ female }}</li>
           <li class="list-group-item">Average life expectancy: {{ avr_life }} years</li>
-          <li class="list-group-item">Average life expectancy of male graduates: {{ avr_life_male }} years </li>
+          <li class="list-group-item">Average life expectancy of male graduates: {{ avr_life_male }} years</li>
           <li class="list-group-item">Average life expectancy of female graduates: {{ avr_life_female }} years</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
+        <canvas id="myChart2" style="max-height: 300px!important;"></canvas>
+      </div>
+      <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
+        <ul class="list-group list-group-flush w-100">
+          <li class="list-group-item">Total number of graduates who gained the doctorate and were conferred the title of
+            docent:{{ doctorate_and_docent }}
+          </li>
+          <li class="list-group-item">Total number of male graduates who gained doctorate: {{ doctorate_male }}</li>
+          <li class="list-group-item">Total number of female graduates who gained doctorate: {{ doctorate_female }}</li>
+          <li class="list-group-item">Total number of male graduates who were conferred the title of
+            docent: {{ docent_male }}</li>
+          <li class="list-group-item">Total number of female graduates who were conferred the title of
+            docent: {{ docent_female }}</li>
         </ul>
       </div>
     </div>
@@ -34,12 +52,44 @@
               plugins: {
                   legend: {
                       display: true,
-                      position: 'bottom',
+                      position: 'top',
                   },
                   title: {
                       display: false,
                       text: 'Total Number of Graduates: '
                   }
+              }
+          }
+      });
+
+      const ctx = document.getElementById('myChart2').getContext('2d');
+      const myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ['Doctorate', 'Docent',],
+              datasets: [{
+                  label: 'Male',
+                  data: [{{doctorate_male}}, {{docent_male}},],
+                  backgroundColor: ["#2c9be7", "#2c9be7"],
+              },
+                  {
+                      label: 'Female',
+                      data: [{{doctorate_female}}, {{docent_female}},],
+                      backgroundColor: ["#fa2b79", "#fa2b79"],
+                  }
+              ],
+          },
+          options: {
+              scales: {
+                  x: {
+                      beginsAtZero: true,
+                      stacked: true,
+                  },
+                  y: {
+                      beginsAtZero: true,
+                      stacked: true,
+                  }
+
               }
           }
       });

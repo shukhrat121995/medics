@@ -27,7 +27,8 @@ def about(request):
 
 def charts(request):
     graduates = Person.objects.all()
-    print(graduates.aggregate(Avg('birth__year')))
+    doctorates = DoctoralDegree.objects.all()
+    docents = Docentship.objects.all()
     context = {
         'graduates': graduates.count(),
         'male': graduates.filter(gender='Male').count(),
@@ -35,6 +36,12 @@ def charts(request):
         'avr_life': life_expectancy(graduates),
         'avr_life_male': life_expectancy(graduates.filter(gender='Male').all()),
         'avr_life_female': life_expectancy(graduates.filter(gender='Female').all()),
+
+        'doctorate_and_docent': doctorates.count() + docents.count(),
+        'doctorate_male': doctorates.filter(person__gender='Male').count(),
+        'doctorate_female': doctorates.filter(person__gender='Female').count(),
+        'docent_male': docents.filter(person__gender='Male').count(),
+        'docent_female': docents.filter(person__gender='Female').count()
     }
     return render(request, 'pages/charts.html', context)
 
