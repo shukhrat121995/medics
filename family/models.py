@@ -52,6 +52,8 @@ class Children(models.Model):
 class SocialClass(models.Model):
     class Meta:
         ordering = ['-id']
+        verbose_name = 'Social Class'
+        verbose_name_plural = 'Social Classes'
 
     title = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)

@@ -35,5 +35,4 @@ class ChildrenAdmin(admin.ModelAdmin):
 @admin.register(SocialClass)
 class SocialClassAdmin(admin.ModelAdmin):
     list_display = ['title', 'description']
-    autocomplete_fields = ['title']
     search_fields = ['title']
