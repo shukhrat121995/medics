@@ -5,11 +5,11 @@ from .models import Person
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     @admin.display(ordering='matriculation__date')
-    def matriculation_date(self, obj):
+    def matriculation_exam(self, obj):
         return obj.matriculation.date
 
     @admin.display(ordering='licentiateofphilosophy__date')
-    def licentiate_of_medicine(self, obj):
+    def licentiate_of_medicine_exam(self, obj):
         return obj.licentiateofphilosophy.date
 
     list_display = ['name',
@@ -17,8 +17,8 @@ class PersonAdmin(admin.ModelAdmin):
                     'birth',
                     'death',
                     'language',
-                    'matriculation_date',
-                    'licentiate_of_medicine',
+                    'matriculation_exam',
+                    'licentiate_of_medicine_exam',
                     'created_at'
                     ]
     autocomplete_fields = ['father', 'mother']
