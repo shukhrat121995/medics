@@ -5,7 +5,7 @@ from .models import Person
 @admin.register(Person)
 class PersonAdmin(admin.ModelAdmin):
     @admin.display(ordering='matriculation__date')
-    def matriculation(self, obj):
+    def matriculation_date(self, obj):
         return obj.matriculation.date
 
     @admin.display(ordering='licentiateofphilosophy__date')
@@ -17,7 +17,7 @@ class PersonAdmin(admin.ModelAdmin):
                     'birth',
                     'death',
                     'language',
-                    'matriculation',
+                    'matriculation_date',
                     'licentiate_of_medicine',
                     'created_at'
                     ]
