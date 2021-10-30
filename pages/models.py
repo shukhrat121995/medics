@@ -25,6 +25,8 @@ class Person(models.Model):
 
     language = models.CharField(max_length=7, choices=LANGUAGE, blank=True)
 
+    retirement = models.DateField(null=True, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True, editable=False, blank=True, null=True)
 
     def __str__(self):
