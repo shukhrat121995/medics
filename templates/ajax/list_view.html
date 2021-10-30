@@ -13,8 +13,8 @@
     <tr onclick="window.open('{% url 'details' pk=person.pk %}', '_blank')" style="cursor:pointer;">
       <td>{{ person.name }}</td>
       <td>{{ person.gender|default:"" }}</td>
-      <td>{{ person.premedical.date|date:"d/m/Y"|default:"" }}</td>
-      <td>{{ person.licentiateofphilosophy.date|date:"d/m/Y"|default:"" }}</td>
+      <td>{{ person.premedical.date|date:"d F, Y"|default:"" }}</td>
+      <td>{{ person.licentiateofphilosophy.date|date:"d F, Y"|default:"" }}</td>
       <td><i class="fa fa-chevron-right icon-hover"></i></td>
     </tr>
   {% endfor %}
