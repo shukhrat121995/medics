@@ -1,97 +1,50 @@
 {% extends 'pages/base.html' %}
+{% load static %}
 
 {% block main %}
+  <!-- charts script should be kept separately -->
+  <script src="{% static 'pages/js/charts.js' %}"></script>
+
   <div class="container mt-3">
     <div class="row">
       <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
-        <canvas id="myChart" style="max-height: 300px"></canvas>
+        <canvas id="pieChartTotalGraduates" style="max-height: 300px"></canvas>
       </div>
       <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
         <ul class="list-group list-group-flush w-100">
-          <li class="list-group-item">Total number of graduates: {{ graduates }}</li>
-          <li class="list-group-item">Total number of male graduates: {{ male }}</li>
-          <li class="list-group-item">Total number of female graduates: {{ female }}</li>
-          <li class="list-group-item">Average life expectancy: {{ avr_life }} years</li>
-          <li class="list-group-item">Average life expectancy of male graduates: {{ avr_life_male }} years</li>
-          <li class="list-group-item">Average life expectancy of female graduates: {{ avr_life_female }} years</li>
+          <li class="list-group-item fw-normal">Total number of graduates: <span class="fw-bold">{{ graduates }}</span></li>
+          <li class="list-group-item fw-normal">Total number of male graduates: <span class="fw-bold">{{ male }}</span></li>
+          <li class="list-group-item fw-normal">Total number of female graduates: <span class="fw-bold">{{ female }}</span></li>
+          <li class="list-group-item fw-normal">Average life expectancy: <span class="fw-bold">{{ avr_life }} years</span></li>
+          <li class="list-group-item fw-normal">Average life expectancy of male graduates: <span class="fw-bold">{{ avr_life_male }} years</span></li>
+          <li class="list-group-item fw-normal">Average life expectancy of female graduates: <span class="fw-bold">{{ avr_life_female }} years</span></li>
         </ul>
       </div>
     </div>
     <div class="row mt-3">
       <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
-        <canvas id="myChart2" style="max-height: 300px!important;"></canvas>
+        <canvas id="stackedBarChartDoctorateAndDocent" style="max-height: 300px!important;"></canvas>
       </div>
       <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
         <ul class="list-group list-group-flush w-100">
-          <li class="list-group-item">Total number of graduates who gained the doctorate and were conferred the title of
-            docent: {{ doctorate_and_docent }}
+          <li class="list-group-item fw-normal">Total number of graduates who gained the doctorate and were conferred the title of
+            docent: <span class="fw-bold">{{ doctorate_and_docent }}</span>
           </li>
-          <li class="list-group-item">Total number of male graduates who gained doctorate: {{ doctorate_male }}</li>
-          <li class="list-group-item">Total number of female graduates who gained doctorate: {{ doctorate_female }}</li>
-          <li class="list-group-item">Total number of male graduates who were conferred the title of
-            docent: {{ docent_male }}</li>
-          <li class="list-group-item">Total number of female graduates who were conferred the title of
-            docent: {{ docent_female }}</li>
+          <li class="list-group-item fw-normal">Total number of male graduates who gained doctorate: <span class="fw-bold">{{ doctorate_male }}</span></li>
+          <li class="list-group-item fw-normal">Total number of female graduates who gained doctorate: <span class="fw-bold">{{ doctorate_female }}</span></li>
+          <li class="list-group-item fw-normal">Total number of male graduates who were conferred the title of
+            docent: <span class="fw-bold">{{ docent_male }}</span></li>
+          <li class="list-group-item fw-normal">Total number of female graduates who were conferred the title of
+            docent: <span class="fw-bold">{{ docent_female }}</span></li>
         </ul>
       </div>
     </div>
 
   </div>
   <script>
-
-      new Chart(document.getElementById("myChart"), {
-          type: 'pie',
-          data: {
-              labels: ["Male", "Female"],
-              datasets: [{
-                  backgroundColor: ["#2c9be7", "#fa2b79"],
-                  data: [{{male}}, {{female}}]
-              }]
-          },
-          options: {
-              plugins: {
-                  legend: {
-                      display: true,
-                      position: 'top',
-                  },
-                  title: {
-                      display: false,
-                      text: 'Total Number of Graduates: '
-                  }
-              }
-          }
-      });
-
-      const ctx = document.getElementById('myChart2').getContext('2d');
-      const myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: ['Doctorate', 'Docent',],
-              datasets: [{
-                  label: 'Male',
-                  data: [{{doctorate_male}}, {{docent_male}},],
-                  backgroundColor: ["#2c9be7", "#2c9be7"],
-              },
-                  {
-                      label: 'Female',
-                      data: [{{doctorate_female}}, {{docent_female}},],
-                      backgroundColor: ["#fa2b79", "#fa2b79"],
-                  }
-              ],
-          },
-          options: {
-              scales: {
-                  x: {
-                      beginsAtZero: true,
-                      stacked: true,
-                  },
-                  y: {
-                      beginsAtZero: true,
-                      stacked: true,
-                  }
-
-              }
-          }
-      });
+      $(document).ready(function () {
+        totalPopulationPieChart({{ male }}, {{ female }})
+        stackedDoctorateAndDocent({{ doctorate_male }}, {{ docent_male }}, {{ doctorate_female }}, {{ docent_female }})
+      })
   </script>
 {% endblock main %}
