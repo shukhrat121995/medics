@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Mother, Father, Spouse, Children
+from .models import Mother, Father, Spouse, Children, SocialClass
 
 
 @admin.register(Father)
@@ -30,3 +30,10 @@ class ChildrenAdmin(admin.ModelAdmin):
     autocomplete_fields = ['person']
     search_fields = ['person__name', 'name']
     list_per_page = 50
+
+
+@admin.register(SocialClass)
+class SocialClassAdmin(admin.ModelAdmin):
+    list_display = ['title', 'description']
+    autocomplete_fields = ['title']
+    search_fields = ['title']
