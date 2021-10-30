@@ -1,5 +1,5 @@
 from django.db import models
-from family.models import Father, Mother
+from family.models import Father, Mother, SocialClass
 
 
 class Person(models.Model):
@@ -22,7 +22,7 @@ class Person(models.Model):
 
     father = models.ForeignKey(Father, on_delete=models.SET_NULL, blank=True, null=True)
     mother = models.ForeignKey(Mother, on_delete=models.SET_NULL, blank=True, null=True)
-
+    social_class = models.ForeignKey(SocialClass, on_delete=models.SET_NULL, blank=True, null=True)
     language = models.CharField(max_length=7, choices=LANGUAGE, blank=True)
 
     retirement = models.DateField(null=True, blank=True)
@@ -31,6 +31,3 @@ class Person(models.Model):
 
     def __str__(self):
         return self.name
-
-
-
