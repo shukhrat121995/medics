@@ -47,3 +47,14 @@ class Children(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SocialClass(models.Model):
+    class Meta:
+        ordering = ['-id']
+
+    title = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.title
