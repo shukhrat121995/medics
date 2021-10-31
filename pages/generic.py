@@ -17,11 +17,11 @@ def life_expectancy(persons):
     return round(average, 2)
 
 
-def study_duration(persons):
+def study_duration(persons, CandidateOfMedicine):
     durations = list()
     average = 0
     for obj in persons:
-        if obj.retirement and obj.candidateofmedicine.date:
+        if obj.retirement and get_or_none(CandidateOfMedicine, person=obj.pk):
             duration = obj.retirement.year - obj.candidateofmedicine.date.year
             durations.append(duration)
     if durations and len(durations) > 0:

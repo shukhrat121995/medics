@@ -38,9 +38,9 @@ def charts(request):
         'avr_life_male': life_expectancy(graduates.filter(gender='Male').all()),
         'avr_life_female': life_expectancy(graduates.filter(gender='Female').all()),
 
-        'avr_med_practice': study_duration(graduates),
-        'avr_med_practice_male': study_duration(graduates.filter(gender='Male').all()),
-        'avr_med_practice_female': study_duration(graduates.filter(gender='Female').all()),
+        'avr_med_practice': study_duration(graduates, CandidateOfMedicine),
+        'avr_med_practice_male': study_duration(graduates.filter(gender='Male').all(), CandidateOfMedicine),
+        'avr_med_practice_female': study_duration(graduates.filter(gender='Female').all(), CandidateOfMedicine),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),
