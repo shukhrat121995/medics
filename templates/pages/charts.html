@@ -12,12 +12,18 @@
       </div>
       <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
         <ul class="list-group list-group-flush w-100">
-          <li class="list-group-item fw-normal">Total number of graduates: <span class="fw-bold">{{ graduates }}</span></li>
-          <li class="list-group-item fw-normal">Total number of male graduates: <span class="fw-bold">{{ male }}</span></li>
-          <li class="list-group-item fw-normal">Total number of female graduates: <span class="fw-bold">{{ female }}</span></li>
-          <li class="list-group-item fw-normal">Average life expectancy: <span class="fw-bold">{{ avr_life }} years</span></li>
-          <li class="list-group-item fw-normal">Average life expectancy of male graduates: <span class="fw-bold">{{ avr_life_male }} years</span></li>
-          <li class="list-group-item fw-normal">Average life expectancy of female graduates: <span class="fw-bold">{{ avr_life_female }} years</span></li>
+          <li class="list-group-item fw-normal">
+            Total number of graduates: <span class="fw-bold">{{ graduates }}</span></li>
+          <li class="list-group-item fw-normal">
+            Total number of male graduates: <span class="fw-bold">{{ male }}</span></li>
+          <li class="list-group-item fw-normal">
+            Total number of female graduates: <span class="fw-bold">{{ female }}</span></li>
+          <li class="list-group-item fw-normal">
+            Average life expectancy: <span class="fw-bold">{{ avr_life }} years</span></li>
+          <li class="list-group-item fw-normal">
+            Average life expectancy of male graduates: <span class="fw-bold">{{ avr_life_male }} years</span></li>
+          <li class="list-group-item fw-normal">
+            Average life expectancy of female graduates: <span class="fw-bold">{{ avr_life_female }} years</span></li>
         </ul>
       </div>
     </div>
@@ -27,11 +33,14 @@
       </div>
       <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
         <ul class="list-group list-group-flush w-100">
-          <li class="list-group-item fw-normal">Total number of graduates who gained the doctorate and were conferred the title of
+          <li class="list-group-item fw-normal">
+            Total number of graduates who gained the doctorate and were conferred the title of
             docent: <span class="fw-bold">{{ doctorate_and_docent }}</span>
           </li>
-          <li class="list-group-item fw-normal">Total number of male graduates who gained doctorate: <span class="fw-bold">{{ doctorate_male }}</span></li>
-          <li class="list-group-item fw-normal">Total number of female graduates who gained doctorate: <span class="fw-bold">{{ doctorate_female }}</span></li>
+          <li class="list-group-item fw-normal">Total number of male graduates who gained doctorate: <span
+              class="fw-bold">{{ doctorate_male }}</span></li>
+          <li class="list-group-item fw-normal">Total number of female graduates who gained doctorate: <span
+              class="fw-bold">{{ doctorate_female }}</span></li>
           <li class="list-group-item fw-normal">Total number of male graduates who were conferred the title of
             docent: <span class="fw-bold">{{ docent_male }}</span></li>
           <li class="list-group-item fw-normal">Total number of female graduates who were conferred the title of
@@ -39,12 +48,30 @@
         </ul>
       </div>
     </div>
+    <div class="row mt-3">
+      <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
+        <canvas id="barChartPracticeMedicine" style="max-height: 300px!important;"></canvas>
+      </div>
+      <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
+        <ul class="list-group list-group-flush w-100">
+          <li class="list-group-item fw-normal">How long did the doctors of the cohort practice medicine: <span
+              class="fw-bold">{{ avr_med_practice }} years</span>
+          </li>
+          <li class="list-group-item fw-normal">How long did male graduates practice medicine: <span
+              class="fw-bold">{{ avr_med_practice_male }} years</span></li>
+          <li class="list-group-item fw-normal">How long did female graduates practice medicine: <span
+              class="fw-bold">{{ avr_med_practice_female }} years</span></li>
+        </ul>
+      </div>
+    </div>
 
   </div>
   <script>
       $(document).ready(function () {
-        totalPopulationPieChart({{ male }}, {{ female }})
-        stackedDoctorateAndDocent({{ doctorate_male }}, {{ docent_male }}, {{ doctorate_female }}, {{ docent_female }})
+          totalPopulationPieChart({{ male }}, {{ female }})
+          stackedDoctorateAndDocent({{ doctorate_male }}, {{ docent_male }}, {{ doctorate_female }}, {{ docent_female }})
+          barChartPracticeMedicine({{ avr_med_practice_male }}, {{ avr_med_practice_female }})
+
       })
   </script>
 {% endblock main %}

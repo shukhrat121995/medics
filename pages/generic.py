@@ -15,3 +15,15 @@ def life_expectancy(persons):
     if ages and len(ages) > 0:
         average = sum(ages)/len(ages)
     return round(average, 2)
+
+
+def study_duration(persons):
+    durations = list()
+    average = 0
+    for obj in persons:
+        if obj.retirement and obj.candidateofmedicine.date:
+            duration = obj.retirement.year - obj.candidateofmedicine.date.year
+            durations.append(duration)
+    if durations and len(durations) > 0:
+        average = sum(durations)/len(durations)
+    return round(average, 2)

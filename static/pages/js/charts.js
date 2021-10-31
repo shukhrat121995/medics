@@ -56,3 +56,27 @@ function stackedDoctorateAndDocent(doctorate_male = 0, docent_male = 0, doctorat
         }
     });
 }
+
+function barChartPracticeMedicine(avr_male = 0, avr_female = 0) {
+    new Chart(document.getElementById("barChartPracticeMedicine"), {
+        type: 'bar',
+        data: {
+            labels: ["Male", "Female"],
+            datasets: [
+                {
+                    backgroundColor: ["#2c9be7", "#fa2b79"],
+                    data: [avr_male, avr_female]
+                }
+            ]
+        },
+        options: {
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+                    text: 'Avr Practice Medicine in years'
+                }
+            },
+        }
+    });
+}

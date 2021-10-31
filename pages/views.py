@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.shortcuts import render
 from functools import reduce
 from .models import Person
-from .generic import get_or_none, life_expectancy
+from .generic import get_or_none, life_expectancy, study_duration
 from family.models import Spouse, Children
 from career.models import Internship, DoctoralDegree, Speciality, Docentship, FirstPublicPost, HighestPost
 from examinations.models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateOfMedicine, \
@@ -29,6 +29,7 @@ def charts(request):
     graduates = Person.objects.all()
     doctorates = DoctoralDegree.objects.all()
     docents = Docentship.objects.all()
+
     context = {
         'graduates': graduates.count(),
         'male': graduates.filter(gender='Male').count(),
@@ -36,6 +37,10 @@ def charts(request):
         'avr_life': life_expectancy(graduates),
         'avr_life_male': life_expectancy(graduates.filter(gender='Male').all()),
         'avr_life_female': life_expectancy(graduates.filter(gender='Female').all()),
+
+        'avr_med_practice': study_duration(graduates),
+        'avr_med_practice_male': study_duration(graduates.filter(gender='Male').all()),
+        'avr_med_practice_female': study_duration(graduates.filter(gender='Female').all()),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),
