@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    ShowPersons();
     $("#birthFromDate").datepicker({
         format: 'dd/mm/yyyy',
         autoclose: 1,
@@ -9,7 +8,8 @@ $(document).ready(function () {
     }).on('changeDate', function (selected) {
         var minDate = new Date(selected.date.valueOf());
         $('#birthToDate').datepicker('setStartDate', minDate);
-        $("#birthToDate").val($("#birthFromDate").val());
+        /* hide autocomplete for birth date*/
+        //$("#birthToDate").val($("#birthFromDate").val());
         $(this).datepicker('hide');
     });
 
@@ -19,6 +19,7 @@ $(document).ready(function () {
         //endDate: new Date()
     }).on('changeDate', function (selected) {
         $(this).datepicker('hide');
+        ShowPersons()
     });
 
     $("#deathFromDate").datepicker({
@@ -30,7 +31,8 @@ $(document).ready(function () {
     }).on('changeDate', function (selected) {
         var minDate = new Date(selected.date.valueOf());
         $('#deathToDate').datepicker('setStartDate', minDate);
-        $("#deathToDate").val($("#deathFromDate").val());
+        /* hide autocomplete for death date */
+        //$("#deathToDate").val($("#deathFromDate").val());
         $(this).datepicker('hide');
     });
 
@@ -40,6 +42,7 @@ $(document).ready(function () {
         //endDate: new Date()
     }).on('changeDate', function (selected) {
         $(this).datepicker('hide');
+        ShowPersons()
     });
     const node = document.getElementById('search_query');
     node.addEventListener("keydown", function (event) {
@@ -48,15 +51,23 @@ $(document).ready(function () {
             ShowPersons(document.getElementById('search_query').value);
         }
     });
+    ShowPersons();
 });
 
 
 function ShowPersons(page_number) {
     query = document.getElementById('search_query').value
+
     gender = document.getElementById("gender_id");
     gender_selected = gender.options[gender.selectedIndex].value;
+
+    language = document.getElementById("language_id");
+    language_selected = language.options[language.selectedIndex].value;
+    console.log(language_selected)
     birth_from_date = document.getElementById('birthFromDate').value
     birth_to_date = document.getElementById('birthToDate').value
+    death_from_date = document.getElementById('deathFromDate').value
+    death_to_date = document.getElementById('deathToDate').value
 
     $.ajax({
         url: "../getpersons",
@@ -65,8 +76,11 @@ function ShowPersons(page_number) {
             "query": query,
             "page": page_number,
             "gender": gender_selected,
+            "language": language_selected,
             "birth_from_date": birth_from_date,
-            "birth_to_date": birth_to_date
+            "birth_to_date": birth_to_date,
+            "death_from_date": death_from_date,
+            "death_to_date": death_to_date,
         },
         success: function (data) {
             $("#persons_list").html(data);

@@ -96,8 +96,12 @@ def getpersons(request):
     query = set(query.split())
     p_gender = request.GET["gender"]
 
+    p_language = request.GET["language"]
+
     birth_from = request.GET["birth_from_date"]
     birth_to = request.GET["birth_to_date"]
+    death_from = request.GET["death_from_date"]
+    death_to = request.GET["death_to_date"]
 
     if query:
         persons = Person.objects.filter(reduce(and_, [Q(name__icontains=s) for s in query])).order_by('-created_at')
@@ -107,10 +111,18 @@ def getpersons(request):
     if p_gender:
         persons = persons.filter(gender=p_gender)
 
+    if p_language:
+        persons = persons.filter(language=p_language)
+
     if birth_from and birth_to:
         birth_from = datetime.strptime(birth_from, '%d/%m/%Y').strftime('%Y-%m-%d')
         birth_to = datetime.strptime(birth_to, '%d/%m/%Y').strftime('%Y-%m-%d')
         persons = persons.filter(birth__range=[birth_from, birth_to])
+
+    if death_from and death_to:
+        death_from = datetime.strptime(death_from, '%d/%m/%Y').strftime('%Y-%m-%d')
+        death_to = datetime.strptime(death_to, '%d/%m/%Y').strftime('%Y-%m-%d')
+        persons = persons.filter(death__range=[death_from, death_to])
 
     paginator = Paginator(persons, 25)  # Show 1 person per page.
 

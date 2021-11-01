@@ -48,17 +48,17 @@
     <div class="row" style="margin-left: 0; margin-right: 0;">
       <div class="col-md-3" style="margin-top: 1rem">
         <div class="row px-3 py-2" style="padding-top: 0!important;">
-          <select id="gender_id" class="form-select" aria-label="Gender">
+          <select id="gender_id" class="form-select" aria-label="Gender" onchange="ShowPersons()">
             <option value="" selected>Gender</option>
             <option value="Male">Gender: Male</option>
             <option value="Female">Gender: Female</option>
           </select>
         </div>
         <div class="row px-3 py-2">
-          <select class="form-select" aria-label="Language">
-            <option selected>Language</option>
-            <option value="1">Language: Finnish</option>
-            <option value="2">Language: Sweden</option>
+          <select id="language_id" class="form-select" aria-label="Language" onchange="ShowPersons()">
+            <option value="" selected>Language</option>
+            <option value="Finnish">Language: Finnish</option>
+            <option value="Swedish">Language: Swedish</option>
           </select>
         </div>
         <div class="row px-3 py-2">
