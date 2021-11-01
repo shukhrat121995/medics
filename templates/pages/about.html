@@ -1,5 +1,36 @@
 {% extends 'pages/base.html' %}
+{% load static %}
 
 {% block main %}
-  About page
+  <div class="container mt-3">
+    <p>
+      MEDICS database contains searchable data on the academic studies and medical careers of all Finnish physicians
+      who graduated and were entered into the medical register between 1896 and 1929. Their total number is a little
+      short of 1000. Since the primary selection criterion has been graduation and “legitimation” (laillistaminen), or
+      medical registration, the cohort does not include people who studied medicine but did not graduate as licentiates
+      of medicine. Licentiate of Medicine degree was (and is) the basic medical degree in Finland. Neither does MEDICS
+      include foreign doctors who worked in Finland with a special permission, “venia practicandi”. Almost all doctors
+      included in the database graduated from the Medical Faculty of the University of Helsinki (called the Imperial
+      Alexander University until 1917), which was the only medical school in the country, after which they were licensed
+      by the National Board of Health (Lääkintöhallitus).
+    </p>
+    <p>
+      The data was collected from various public registers and publications (Lääkärien nimikirjat, lääkärimatrikkelit,
+      Valtiokalenteri etc.) as part of the research project Exclusive Treatment: Women’s Entry into Medicine in Finland,
+      1882-1917, carried out by Senior Research Fellow Heini Hakosalo (University of Oulu) and funded by the Academy of
+      Finland.
+    </p>
+    <p>
+      The interface was designed and executed by <b>Shukhrat Mirrakhimov</b>, <b>Maria Shushakova</b>,
+      <b>Polina Chainikova</b> and <b>Daria Efimova</b> and first published online on December 2021.
+    </p>
+    <p>
+      Data found on the <a href="{% url 'index' %}">Home</a> tab can be used without attribution. If you use or refer to the material found under
+      the <a href="{% url 'charts' %}">Charts</a> tab, however, please attribute to Heini Hakosalo, MEDICS database.
+    </p>
+    <div class="row">
+      <div class="col"><img class="free-use" src="{% static 'pages/img/free-use-1.png'%}" alt="img title 1"/></div>
+      <div class="col"><img class="free-use" src="{% static 'pages/img/free-use-2.png'%}" alt="img title 2"/></div>
+    </div>
+  </div>
 {% endblock main %}

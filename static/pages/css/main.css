@@ -5,6 +5,10 @@
     --secondary: #0b4fbd;
 }
 
+html, body {
+    height: 100%;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -87,8 +91,8 @@ li, a, button {
     transform: scaleX(1);
 }
 
-.active::before{
-    transform: scaleX(1)!important;
+.active::before {
+    transform: scaleX(1) !important;
 }
 
 .sign_in {
@@ -144,8 +148,18 @@ li, a, button {
 }
 
 .horizontal-ruler {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#sticky-footer {
+    flex-shrink: 0;
+}
+
+.free-use{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

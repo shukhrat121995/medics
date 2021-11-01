@@ -21,7 +21,7 @@
   <script src="{% static 'pages/js/base.js' %}"></script>
   <title>Medics</title>
 </head>
-<body>
+<body style="display: flex!important; flex-direction: column!important;">
 <div class="top-nav">
   <header>
     <div class="navigation">
@@ -40,7 +40,7 @@
   </header>
 </div>
 
-<div class="main-container">
+<div class="main-container" style="flex: 1 0 auto!important;">
   {% block main %}
     <!-- main script should be kept separately -->
     <script src="{% static 'pages/js/main.js' %}"></script>
