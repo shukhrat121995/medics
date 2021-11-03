@@ -98,6 +98,10 @@ def getpersons(request):
 
     p_language = request.GET["language"]
 
+    p_social_class = request.GET["social_class"]
+
+    p_place_of_birth = request.GET["place_of_birth"]
+
     birth_from = request.GET["birth_from_date"]
     birth_to = request.GET["birth_to_date"]
     death_from = request.GET["death_from_date"]
@@ -113,6 +117,12 @@ def getpersons(request):
 
     if p_language:
         persons = persons.filter(language=p_language)
+
+    if p_social_class:
+        persons = persons.filter(social_class__title=p_social_class)
+
+    if p_place_of_birth:
+        persons = persons.filter(place_of_birth__icontains=p_place_of_birth)
 
     if birth_from and birth_to:
         birth_from = datetime.strptime(birth_from, '%d/%m/%Y').strftime('%Y-%m-%d')

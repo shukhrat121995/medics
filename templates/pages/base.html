@@ -62,18 +62,20 @@
           </select>
         </div>
         <div class="row px-3 py-2">
-          <select class="form-select" aria-label="Member of FLS">
-            <option selected>Member of FLS</option>
-            <option value="1">Member of FLS: Yes</option>
-            <option value="2">Member of FLS: No</option>
+          <select id="social_class" class="form-select" onchange="ShowPersons()">
+            <option selected value="">Social Class</option>
+            <option value="elite">Elite</option>
+            <option value="upper middle class">Upper middle class</option>
+            <option value="lower middle class">Lower middle class</option>
+            <option value="farmers">Farmers</option>
+            <option value="skilled workers">Skilled workers</option>
           </select>
         </div>
         <div class="row px-3 py-2">
-          <select class="form-select" aria-label="Member of Duodecim">
-            <option selected>Member of Duodecim</option>
-            <option value="1">Member of Duodecim: Yes</option>
-            <option value="2">Member of Duodecim: No</option>
-          </select>
+          <form class="px-0">
+            <input id="place_of_birth" type="text" class="form-control" placeholder="Place of birth"
+                   onsubmit="ShowPersons()">
+          </form>
         </div>
         <div class="row px-3 py-2">
           <div class="w-100 px-0">

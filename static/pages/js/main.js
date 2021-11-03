@@ -51,6 +51,13 @@ $(document).ready(function () {
             ShowPersons(document.getElementById('search_query').value);
         }
     });
+    const place_of_birth = document.getElementById('place_of_birth');
+    place_of_birth.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            ShowPersons();
+        }
+    });
     ShowPersons();
 });
 
@@ -61,9 +68,14 @@ function ShowPersons(page_number) {
     gender = document.getElementById("gender_id");
     gender_selected = gender.options[gender.selectedIndex].value;
 
+    social_class = document.getElementById("social_class");
+    social_class_selected = social_class.options[social_class.selectedIndex].value;
+
+    place_of_birth = document.getElementById('place_of_birth').value
+
     language = document.getElementById("language_id");
     language_selected = language.options[language.selectedIndex].value;
-    console.log(language_selected)
+
     birth_from_date = document.getElementById('birthFromDate').value
     birth_to_date = document.getElementById('birthToDate').value
     death_from_date = document.getElementById('deathFromDate').value
@@ -77,6 +89,8 @@ function ShowPersons(page_number) {
             "page": page_number,
             "gender": gender_selected,
             "language": language_selected,
+            "social_class": social_class_selected,
+            "place_of_birth": place_of_birth,
             "birth_from_date": birth_from_date,
             "birth_to_date": birth_to_date,
             "death_from_date": death_from_date,
