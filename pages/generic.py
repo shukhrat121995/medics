@@ -26,8 +26,8 @@ def study_duration(persons, Premedical, LicentiateOfPhilosophy):
         if premedical and licentiate:
             duration = licentiate.date.year - premedical.date.year
             durations.append(duration)
-        if len(durations) > 0:
-            average = sum(durations)/len(durations)
+    if len(durations) > 0:
+        average = sum(durations)/len(durations)
     return round(average, 2)
 
 
