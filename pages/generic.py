@@ -13,7 +13,7 @@ def life_expectancy(persons):
             age = obj.death.year - obj.birth.year
             ages.append(age)
     if ages and len(ages) > 0:
-        average = sum(ages)/len(ages)
+        average = sum(ages) / len(ages)
     return round(average, 2)
 
 
@@ -21,11 +21,13 @@ def study_duration(persons):
     durations = list()
     average = 0
     for obj in persons:
-        if hasattr(obj, 'premedical') and hasattr(obj, 'licentiateofphilosophy'):
+        try:
             duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
             durations.append(duration)
+        except:
+            pass
     if len(durations) > 0:
-        average = sum(durations)/len(durations)
+        average = sum(durations) / len(durations)
     return round(average, 2)
 
 
@@ -33,9 +35,11 @@ def practice_duration(persons):
     durations = list()
     average = 0
     for obj in persons:
-        if obj.retirement and hasattr(obj, 'candidateofmedicine'):
+        try:
             duration = obj.retirement.year - obj.candidateofmedicine.date.year
             durations.append(duration)
+        except:
+            pass
     if len(durations) > 0:
-        average = sum(durations)/len(durations)
+        average = sum(durations) / len(durations)
     return round(average, 2)
