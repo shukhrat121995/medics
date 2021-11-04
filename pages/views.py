@@ -43,9 +43,9 @@ def charts(request):
         'avr_med_study_male': 0,
         'avr_med_study_female': 0,
 
-        'avr_med_practice': practice_duration(graduates, CandidateOfMedicine),
-        'avr_med_practice_male': practice_duration(male, CandidateOfMedicine),
-        'avr_med_practice_female': practice_duration(female, CandidateOfMedicine),
+        'avr_med_practice': practice_duration(graduates),
+        'avr_med_practice_male': practice_duration(male),
+        'avr_med_practice_female': practice_duration(female),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),

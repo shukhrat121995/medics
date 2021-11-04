@@ -32,13 +32,12 @@ def study_duration(persons, Premedical, LicentiateOfPhilosophy):
     return round(average, 2)
 
 
-def practice_duration(persons, CandidateOfMedicine):
+def practice_duration(persons):
     durations = list()
     average = 0
     for obj in persons:
-        # candidate = get_or_none(CandidateOfMedicine, person=obj.pk)
-        if obj.retirement: #and candidate:
-            duration = obj.retirement.year# - candidate.date.year
+        if obj.retirement and hasattr(obj, 'candidateofmedicine'):
+            duration = obj.retirement.year - obj.candidateofmedicine.date.year
             durations.append(duration)
     if len(durations) > 0:
         average = sum(durations)/len(durations)
