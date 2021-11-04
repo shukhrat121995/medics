@@ -20,7 +20,7 @@ def life_expectancy(persons):
     return round(average, 2)
 
 
-def study_duration(persons, Premedical, LicentiateOfPhilosophy):
+def study_duration(persons):
     durations = list()
     average = 0
     for obj in persons:

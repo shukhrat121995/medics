@@ -39,9 +39,9 @@ def charts(request):
         'avr_life_male': life_expectancy(male),
         'avr_life_female': life_expectancy(female),
 
-        'avr_med_study': study_duration(graduates, Premedical, LicentiateOfPhilosophy),
-        'avr_med_study_male': study_duration(male, Premedical, LicentiateOfPhilosophy),
-        'avr_med_study_female': study_duration(female, Premedical, LicentiateOfPhilosophy),
+        'avr_med_study': study_duration(graduates),
+        'avr_med_study_male': study_duration(male),
+        'avr_med_study_female': study_duration(female),
 
         'avr_med_practice': practice_duration(graduates, CandidateOfMedicine),
         'avr_med_practice_male': practice_duration(male, CandidateOfMedicine),
