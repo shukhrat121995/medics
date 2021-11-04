@@ -18,6 +18,10 @@
           <div class="col"><p class="mb-0">Language: <b>{{ person.language }}</b></p></div>
         </div>
         <div class="row">
+          <div class="col"><p class="mb-0">Social Class: <b>{{ person.social_class.title }}</b></p></div>
+          <div class="col"><p class="mb-0">Social Class Description: <b>{{ person.social_class.description }}</b></p></div>
+        </div>
+        <div class="row">
           <div class="col">
             <p class="mb-0 text-danger">First public post:
               <b>{{ first_public_post.name_of_post }}, {{ first_public_post.date }}
