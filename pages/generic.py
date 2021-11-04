@@ -1,6 +1,3 @@
-from django.core.exceptions import ObjectDoesNotExist
-
-
 def get_or_none(classmodel, **kwargs):
     try:
         return classmodel.objects.get(**kwargs)
@@ -16,22 +13,20 @@ def life_expectancy(persons):
             age = obj.death.year - obj.birth.year
             ages.append(age)
     if ages and len(ages) > 0:
-        average = sum(ages) / len(ages)
+        average = sum(ages)/len(ages)
     return round(average, 2)
 
 
-def study_duration(persons):
+def study_duration(persons, Premedical, LicentiateOfPhilosophy):
     durations = list()
     average = 0
     for obj in persons:
-        try:
-            pass
+        if get_or_none(Premedical, person=obj.pk) and get_or_none(LicentiateOfPhilosophy, person=obj.pk):
             # duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
             # durations.append(duration)
-        except ObjectDoesNotExist:
             pass
     if len(durations) > 0:
-        average = sum(durations) / len(durations)
+        average = sum(durations)/len(durations)
     return round(average, 2)
 
 
@@ -43,5 +38,5 @@ def practice_duration(persons, CandidateOfMedicine):
             duration = obj.retirement.year - obj.candidateofmedicine.date.year
             durations.append(duration)
     if len(durations) > 0:
-        average = sum(durations) / len(durations)
+        average = sum(durations)/len(durations)
     return round(average, 2)
