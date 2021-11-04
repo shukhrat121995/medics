@@ -21,8 +21,9 @@ def study_duration(persons, Premedical, LicentiateOfPhilosophy):
     durations = list()
     average = 0
     for obj in persons:
+        pass
         # premedical = get_or_none(Premedical, person=obj.pk)
-        licentiate = get_or_none(LicentiateOfPhilosophy, person=obj.pk)
+        # licentiate = get_or_none(LicentiateOfPhilosophy, person=obj.pk)
         # if premedical and licentiate:
         #     duration = licentiate.date.year - premedical.date.year
         #     durations.append(duration)
