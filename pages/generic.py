@@ -17,16 +17,13 @@ def life_expectancy(persons):
     return round(average, 2)
 
 
-def study_duration(persons, Premedical, LicentiateOfPhilosophy):
+def study_duration(persons):
     durations = list()
     average = 0
     for obj in persons:
-        pass
-        # premedical = get_or_none(Premedical, person=obj.pk)
-        # licentiate = get_or_none(LicentiateOfPhilosophy, person=obj.pk)
-        # if premedical and licentiate:
-        #     duration = licentiate.date.year - premedical.date.year
-        #     durations.append(duration)
+        if hasattr(obj, 'premedical') and hasattr(obj, 'licentiateofphilosophy'):
+            duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
+            durations.append(duration)
     if len(durations) > 0:
         average = sum(durations)/len(durations)
     return round(average, 2)
