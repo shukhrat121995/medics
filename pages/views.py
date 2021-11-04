@@ -1,12 +1,11 @@
 from operator import and_
 from datetime import datetime
 from django.core.paginator import Paginator
-from django.db.models import Avg
 from django.db.models import Q
 from django.shortcuts import render
 from functools import reduce
 from .models import Person
-from .generic import get_or_none, life_expectancy, study_duration
+from .generic import get_or_none, life_expectancy, study_duration, practice_duration
 from family.models import Spouse, Children
 from career.models import Internship, DoctoralDegree, Speciality, Docentship, FirstPublicPost, HighestPost
 from examinations.models import Matriculation, Premedical, CandidateOfPhilosophy, CandidateOfMedicine, \
@@ -38,9 +37,13 @@ def charts(request):
         'avr_life_male': life_expectancy(graduates.filter(gender='Male').all()),
         'avr_life_female': life_expectancy(graduates.filter(gender='Female').all()),
 
-        'avr_med_practice': study_duration(graduates, CandidateOfMedicine),
-        'avr_med_practice_male': study_duration(graduates.filter(gender='Male').all(), CandidateOfMedicine),
-        'avr_med_practice_female': study_duration(graduates.filter(gender='Female').all(), CandidateOfMedicine),
+        'avr_med_study': study_duration(graduates, Premedical, LicentiateOfPhilosophy),
+        'avr_med_study_male': study_duration(graduates.filter(gender='Male').all(), Premedical, LicentiateOfPhilosophy),
+        'avr_med_study_female': study_duration(graduates.filter(gender='Female').all(), Premedical, LicentiateOfPhilosophy),
+
+        'avr_med_practice': practice_duration(graduates, CandidateOfMedicine),
+        'avr_med_practice_male': practice_duration(graduates.filter(gender='Male').all(), CandidateOfMedicine),
+        'avr_med_practice_female': practice_duration(graduates.filter(gender='Female').all(), CandidateOfMedicine),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),

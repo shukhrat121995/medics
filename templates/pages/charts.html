@@ -50,16 +50,32 @@
     </div>
     <div class="row mt-3">
       <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
+        <canvas id="barChartStudyMedicine" style="max-height: 300px!important;"></canvas>
+      </div>
+      <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
+        <ul class="list-group list-group-flush w-100">
+          <li class="list-group-item fw-normal">How long did the doctors of the cohort studied medicine: <span
+              class="fw-bold">{{ avr_med_study }} years</span>
+          </li>
+          <li class="list-group-item fw-normal">How long did male graduates studied medicine: <span
+              class="fw-bold">{{ avr_med_study_male }} years</span></li>
+          <li class="list-group-item fw-normal">How long did female graduates studied medicine: <span
+              class="fw-bold">{{ avr_med_study_female }} years</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
         <canvas id="barChartPracticeMedicine" style="max-height: 300px!important;"></canvas>
       </div>
       <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
         <ul class="list-group list-group-flush w-100">
-          <li class="list-group-item fw-normal">How long did the doctors of the cohort practice medicine: <span
+          <li class="list-group-item fw-normal">How long did the doctors of the cohort practiced medicine: <span
               class="fw-bold">{{ avr_med_practice }} years</span>
           </li>
-          <li class="list-group-item fw-normal">How long did male graduates practice medicine: <span
+          <li class="list-group-item fw-normal">How long did male graduates practiced medicine: <span
               class="fw-bold">{{ avr_med_practice_male }} years</span></li>
-          <li class="list-group-item fw-normal">How long did female graduates practice medicine: <span
+          <li class="list-group-item fw-normal">How long did female graduates practiced medicine: <span
               class="fw-bold">{{ avr_med_practice_female }} years</span></li>
         </ul>
       </div>
@@ -70,8 +86,8 @@
       $(document).ready(function () {
           totalPopulationPieChart({{ male }}, {{ female }})
           stackedDoctorateAndDocent({{ doctorate_male }}, {{ docent_male }}, {{ doctorate_female }}, {{ docent_female }})
+          barChartStudyMedicine(10, 12)
           barChartPracticeMedicine({{ avr_med_practice_male }}, {{ avr_med_practice_female }})
-
       })
   </script>
 {% endblock main %}
