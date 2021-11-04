@@ -21,8 +21,8 @@ def study_duration(persons, Premedical, LicentiateOfPhilosophy):
     durations = list()
     average = 0
     for obj in persons:
-        if get_or_none(Premedical, person=obj.pk) and get_or_none(LicentiateOfPhilosophy, person=obj.pk):
-            duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
+        if get_or_none(Premedical, person=obj.pk):
+            duration = obj.premedical.date.year
             durations.append(duration)
     if len(durations) > 0:
         average = sum(durations)/len(durations)
