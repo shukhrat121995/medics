@@ -36,9 +36,9 @@ def practice_duration(persons, CandidateOfMedicine):
     durations = list()
     average = 0
     for obj in persons:
-        candidate = get_or_none(CandidateOfMedicine, person=obj.pk)
-        if obj.retirement and candidate:
-            duration = obj.retirement.year - candidate.date.year
+        # candidate = get_or_none(CandidateOfMedicine, person=obj.pk)
+        if obj.retirement: #and candidate:
+            duration = obj.retirement.year# - candidate.date.year
             durations.append(duration)
     if len(durations) > 0:
         average = sum(durations)/len(durations)
