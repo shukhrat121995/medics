@@ -26,24 +26,26 @@ def about(request):
 
 def charts(request):
     graduates = Person.objects.all()
+    male = graduates.filter(gender='Male').all()
+    female = graduates.filter(gender='Female').all()
     doctorates = DoctoralDegree.objects.all()
     docents = Docentship.objects.all()
 
     context = {
         'graduates': graduates.count(),
-        'male': graduates.filter(gender='Male').count(),
-        'female': graduates.filter(gender='Female').count(),
+        'male': male.count(),
+        'female': female.count(),
         'avr_life': life_expectancy(graduates),
-        'avr_life_male': life_expectancy(graduates.filter(gender='Male').all()),
-        'avr_life_female': life_expectancy(graduates.filter(gender='Female').all()),
+        'avr_life_male': life_expectancy(male),
+        'avr_life_female': life_expectancy(female),
 
         'avr_med_study': study_duration(graduates, Premedical, LicentiateOfPhilosophy),
-        'avr_med_study_male': study_duration(graduates.filter(gender='Male').all(), Premedical, LicentiateOfPhilosophy),
-        'avr_med_study_female': study_duration(graduates.filter(gender='Female').all(), Premedical, LicentiateOfPhilosophy),
+        'avr_med_study_male': study_duration(male, Premedical, LicentiateOfPhilosophy),
+        'avr_med_study_female': study_duration(female, Premedical, LicentiateOfPhilosophy),
 
         'avr_med_practice': practice_duration(graduates, CandidateOfMedicine),
-        'avr_med_practice_male': practice_duration(graduates.filter(gender='Male').all(), CandidateOfMedicine),
-        'avr_med_practice_female': practice_duration(graduates.filter(gender='Female').all(), CandidateOfMedicine),
+        'avr_med_practice_male': practice_duration(male, CandidateOfMedicine),
+        'avr_med_practice_female': practice_duration(female, CandidateOfMedicine),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),

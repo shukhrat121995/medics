@@ -86,7 +86,7 @@
       $(document).ready(function () {
           totalPopulationPieChart({{ male }}, {{ female }})
           stackedDoctorateAndDocent({{ doctorate_male }}, {{ docent_male }}, {{ doctorate_female }}, {{ docent_female }})
-          barChartStudyMedicine(10, 12)
+          barChartStudyMedicine({{avr_med_study_male}}, {{avr_med_study_female}})
           barChartPracticeMedicine({{ avr_med_practice_male }}, {{ avr_med_practice_female }})
       })
   </script>
