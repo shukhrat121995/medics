@@ -55,6 +55,10 @@ def charts(request):
         'avr_first_post': first_post(graduates.select_related('firstpublicpost', 'licentiateofphilosophy')),
         'avr_first_post_male': first_post(male.select_related('firstpublicpost', 'licentiateofphilosophy')),
         'avr_first_post_female': first_post(female.select_related('firstpublicpost', 'licentiateofphilosophy')),
+        'avr_first_post_fin': first_post(
+            graduates.select_related('firstpublicpost', 'licentiateofphilosophy').filter(language='Finnish')),
+        'avr_first_post_swe': first_post(
+            graduates.select_related('firstpublicpost', 'licentiateofphilosophy').filter(language='Swedish')),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),
