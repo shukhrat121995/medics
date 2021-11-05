@@ -44,13 +44,13 @@ def charts(request):
         'avr_med_study_male': study_duration(male.select_related('premedical', 'licentiateofphilosophy')),
         'avr_med_study_female': study_duration(female.select_related('premedical', 'licentiateofphilosophy')),
 
-        'avr_med_practice': 0, #practice_duration(graduates),
-        'avr_med_practice_male': 0, #practice_duration(male),
-        'avr_med_practice_female': 0, #practice_duration(female),
+        'avr_med_practice': practice_duration(graduates.select_related('candidateofmedicine')),
+        'avr_med_practice_male': practice_duration(male.select_related('candidateofmedicine')),
+        'avr_med_practice_female': practice_duration(female.select_related('candidateofmedicine')),
 
-        'avr_first_post': 0, #first_post(graduates),
-        'avr_first_post_male': 0, #first_post(male),
-        'avr_first_post_female': 0, #first_post(female),
+        'avr_first_post': first_post(graduates.select_related('firstpublicpost', 'licentiateofphilosophy')),
+        'avr_first_post_male': first_post(male.select_related('firstpublicpost', 'licentiateofphilosophy')),
+        'avr_first_post_female': first_post(female.select_related('firstpublicpost', 'licentiateofphilosophy')),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),
