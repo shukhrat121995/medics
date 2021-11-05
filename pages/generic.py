@@ -22,7 +22,7 @@ def study_duration(persons):
     average = 0
     for obj in persons:
         try:
-            duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
+            duration = obj.licentiateofphilosophy.date.year
             durations.append(duration)
         except:
             pass
