@@ -43,6 +43,10 @@ def charts(request):
         'avr_med_study': study_duration(graduates.select_related('premedical', 'licentiateofphilosophy')),
         'avr_med_study_male': study_duration(male.select_related('premedical', 'licentiateofphilosophy')),
         'avr_med_study_female': study_duration(female.select_related('premedical', 'licentiateofphilosophy')),
+        'avr_med_study_fin': study_duration(
+            graduates.select_related('premedical', 'licentiateofphilosophy').filter(language='Finnish')),
+        'avr_med_study_swe': study_duration(
+            graduates.select_related('premedical', 'licentiateofphilosophy').filter(language='Swedish')),
 
         'avr_med_practice': practice_duration(graduates.select_related('candidateofmedicine')),
         'avr_med_practice_male': practice_duration(male.select_related('candidateofmedicine')),

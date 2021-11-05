@@ -25,7 +25,7 @@ def study_duration(persons):
             duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
             durations.append(duration)
         except:
-            pass
+            continue
     if len(durations) > 0:
         average = sum(durations) / len(durations)
     return round(average, 2)
@@ -39,7 +39,7 @@ def practice_duration(persons):
             duration = obj.retirement.year - obj.candidateofmedicine.date.year
             durations.append(duration)
         except:
-            pass
+            continue
     if len(durations) > 0:
         average = sum(durations) / len(durations)
     return round(average, 2)
@@ -53,7 +53,7 @@ def first_post(persons):
             duration = obj.firstpublicpost.date.year - obj.licentiateofphilosophy.date.year
             durations.append(duration)
         except:
-            pass
+            continue
     if len(durations) > 0:
         average = sum(durations) / len(durations)
     return round(average, 2)
