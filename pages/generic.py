@@ -5,14 +5,9 @@ def get_or_none(classmodel, **kwargs):
         return None
 
 
-def life_expectancy(Person, male, female):
+def life_expectancy(persons):
     ages = list()
     average = 0
-    persons = Person.objects.all()
-    if male:
-        persons.filter(gender='Male')
-    if female:
-        persons.filter(gender='Female')
     for obj in persons:
         if obj.birth and obj.death:
             age = obj.death.year - obj.birth.year
@@ -22,15 +17,9 @@ def life_expectancy(Person, male, female):
     return round(average, 2)
 
 
-def study_duration(Person, male, female):
+def study_duration(persons):
     durations = list()
     average = 0
-    persons = Person.objects.all()
-    if male:
-        persons.filter(gender='Male')
-    if female:
-        persons.filter(gender='Female')
-
     for obj in persons:
         try:
             duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
