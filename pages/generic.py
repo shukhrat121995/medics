@@ -17,12 +17,12 @@ def life_expectancy(persons):
     return round(average, 2)
 
 
-def study_duration(persons):
+def study_duration(persons, premedical, licentiate):
     durations = list()
     average = 0
     for obj in persons:
         try:
-            duration = obj.licentiateofphilosophy.date.year - obj.premedical.date.year
+            duration = licentiate.get(person=obj.pk).date.year - premedical.get(person=obj.pk).date.year
             durations.append(duration)
         except:
             pass

@@ -25,9 +25,13 @@ def about(request):
 
 
 def charts(request):
-    graduates = Person.objects.all()
+    graduates = Person.objects.select_related(None)
     male = graduates.filter(gender='Male').all()
     female = graduates.filter(gender='Female').all()
+
+    premedical = Premedical.objects.select_related('person')
+    licentiate = LicentiateOfPhilosophy.objects.select_related('person')
+
     doctorates = DoctoralDegree.objects.all()
     docents = Docentship.objects.all()
 
@@ -39,9 +43,9 @@ def charts(request):
         'avr_life_male': life_expectancy(male),
         'avr_life_female': life_expectancy(female),
 
-        'avr_med_study': study_duration(graduates),
-        'avr_med_study_male': study_duration(male),
-        'avr_med_study_female': study_duration(female),
+        'avr_med_study': study_duration(graduates, premedical, licentiate),
+        'avr_med_study_male': study_duration(graduates.filter(gender='Male'), premedical, licentiate),
+        'avr_med_study_female': study_duration(graduates.filter(gender='Female'), premedical, licentiate),
 
         'avr_med_practice': practice_duration(graduates),
         'avr_med_practice_male': practice_duration(male),
