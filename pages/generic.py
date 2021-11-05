@@ -43,3 +43,17 @@ def practice_duration(persons):
     if len(durations) > 0:
         average = sum(durations) / len(durations)
     return round(average, 2)
+
+
+def first_post(persons):
+    durations = list()
+    average = 0
+    for obj in persons:
+        try:
+            duration = obj.firstpublicpost.date.year - obj.licentiateofphilosophy.date.year
+            durations.append(duration)
+        except:
+            pass
+    if len(durations) > 0:
+        average = sum(durations) / len(durations)
+    return round(average, 2)

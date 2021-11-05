@@ -80,6 +80,23 @@
         </ul>
       </div>
     </div>
+    <div class="row mt-3">
+      <div class="col-4 mx-2 p-3 shadow-sm" style="border: 1px solid #ced4da;">
+        <canvas id="barChartFirstPost" style="max-height: 300px!important;"></canvas>
+      </div>
+      <div class="col mx-2 shadow-sm" style="border: 1px solid #ced4da; display: flex; align-items: center">
+        <ul class="list-group list-group-flush w-100">
+          <li class="list-group-item fw-normal">How long did it take for graduates to gain their first public post:
+            <span class="fw-bold">{{ avr_first_post }} years</span>
+          </li>
+          <li class="list-group-item fw-normal">How long did it take for male graduates to gain their first public post:
+            <span class="fw-bold">{{ avr_first_post_male }} years</span></li>
+          <li class="list-group-item fw-normal">How long did it take for female graduates to gain their first public
+            post: <span
+                class="fw-bold">{{ avr_first_post_female }} years</span></li>
+        </ul>
+      </div>
+    </div>
 
   </div>
   <script>
@@ -88,6 +105,7 @@
           stackedDoctorateAndDocent({{ doctorate_male }}, {{ docent_male }}, {{ doctorate_female }}, {{ docent_female }})
           barChartStudyMedicine({{avr_med_study_male}}, {{avr_med_study_female}})
           barChartPracticeMedicine({{ avr_med_practice_male }}, {{ avr_med_practice_female }})
+          barChartFirstPost({{ avr_first_post_male }}, {{ avr_first_post_female }})
       })
   </script>
 {% endblock main %}
