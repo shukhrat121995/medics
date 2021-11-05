@@ -40,17 +40,17 @@ def charts(request):
         'avr_life_male': life_expectancy(male),
         'avr_life_female': life_expectancy(female),
 
-        'avr_med_study': study_duration(graduates),
-        'avr_med_study_male': study_duration(male),
-        'avr_med_study_female': study_duration(female),
+        'avr_med_study': 0, # study_duration(graduates),
+        'avr_med_study_male': 0, #study_duration(male),
+        'avr_med_study_female': 0, #study_duration(female),
 
-        'avr_med_practice': practice_duration(graduates),
-        'avr_med_practice_male': practice_duration(male),
-        'avr_med_practice_female': practice_duration(female),
+        'avr_med_practice': 0, #practice_duration(graduates),
+        'avr_med_practice_male': 0, #practice_duration(male),
+        'avr_med_practice_female': 0, #practice_duration(female),
 
-        'avr_first_post': first_post(graduates),
-        'avr_first_post_male': first_post(male),
-        'avr_first_post_female': first_post(female),
+        'avr_first_post': 0, #first_post(graduates),
+        'avr_first_post_male': 0, #first_post(male),
+        'avr_first_post_female': 0, #first_post(female),
 
         'doctorate_and_docent': doctorates.count() + docents.count(),
         'doctorate_male': doctorates.filter(person__gender='Male').count(),
