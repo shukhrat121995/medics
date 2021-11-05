@@ -37,15 +37,23 @@
             Total number of graduates who gained the doctorate and were conferred the title of
             docent: <span class="fw-bold">{{ doctorate_and_docent }}</span>
           </li>
-          <li class="list-group-item fw-normal">Total number of male graduates who gained doctorate: <span
-              class="fw-bold">{{ doctorate_male }}</span></li>
-          <li class="list-group-item fw-normal">Total number of female graduates who gained doctorate: <span
-              class="fw-bold">{{ doctorate_female }}</span></li>
-          <li class="list-group-item fw-normal">Total number of male graduates who were conferred the title of
-            docent: <span class="fw-bold">{{ docent_male }}</span></li>
-          <li class="list-group-item fw-normal">Total number of female graduates who were conferred the title of
-            docent: <span class="fw-bold">{{ docent_female }}</span></li>
-
+          <li class="list-group-item fw-normal"><span
+              class="fw-bold">{{ doctorate_male }}</span> male and <span
+              class="fw-bold">{{ doctorate_female }}</span> female graduates gained doctorate
+          </li>
+          <li class="list-group-item fw-normal"><span class="fw-bold">{{ docent_male }}</span>
+            male and <span class="fw-bold">{{ docent_female }}</span> female graduates were conferred the title of
+            docent
+          </li>
+          <li class="list-group-item fw-normal"><span
+              class="fw-bold">{{ doctorate_fin }}</span> Finnish and <span
+              class="fw-bold">{{ doctorate_swe }}</span> Swedish speakers graduates gained doctorate
+          </li>
+          <li class="list-group-item fw-normal"><span class="fw-bold">{{ docent_fin }}</span>
+            Finnish and <span class="fw-bold">{{ docent_swe }}</span> Swedish speakers graduates were conferred the
+            title of
+            docent
+          </li>
         </ul>
       </div>
     </div>

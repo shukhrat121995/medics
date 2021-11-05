@@ -64,7 +64,11 @@ def charts(request):
         'doctorate_male': doctorates.filter(person__gender='Male').count(),
         'doctorate_female': doctorates.filter(person__gender='Female').count(),
         'docent_male': docents.filter(person__gender='Male').count(),
-        'docent_female': docents.filter(person__gender='Female').count()
+        'docent_female': docents.filter(person__gender='Female').count(),
+        'doctorate_fin': doctorates.filter(person__language='Finnish').count(),
+        'doctorate_swe': doctorates.filter(person__language='Swedish').count(),
+        'docent_fin': docents.filter(person__language='Finnish').count(),
+        'docent_swe': docents.filter(person__language='Swedish').count()
     }
     return render(request, 'pages/charts.html', context)
 
