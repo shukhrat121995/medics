@@ -45,10 +45,9 @@ li, a, button {
 
 .logo {
     font-family: "Monda", sans-serif;
-    font-weight: 600;
     color: #ffffff;
     cursor: default;
-    font-size: 20px;
+    font-size: 18px;
     text-decoration: underline;
     margin-bottom: 0;
 }
