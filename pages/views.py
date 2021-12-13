@@ -156,13 +156,14 @@ def getpersons(request):
         death_to = datetime.strptime(death_to, '%d/%m/%Y').strftime('%Y-%m-%d')
         persons = persons.filter(death__range=[death_from, death_to])
 
-    paginator = Paginator(persons, 25)  # Show 1 person per page.
+    paginator = Paginator(persons, 25)  # Show 25 person per page.
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
     context = {
-        'page_obj': page_obj
+        'page_obj': page_obj,
+        'total': persons.count()
     }
 
     return render(request, 'ajax/list_view.html', context)
